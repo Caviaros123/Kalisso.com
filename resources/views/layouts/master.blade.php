@@ -6,7 +6,9 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="autor" content="Kalisso.com">
+	<meta name="author" content="Kalisso.com">
+	<meta charset="utf-8" name="acceuil" content="Achat et vente en ligne parmi des millions de produits en stock. Livraison gratuite à partir de 2.000Fcfa. Vos articles à petits prix : culture, high-tech, mode, jouets, sport ...">
+
 	<meta name="facebook-domain-verification" content="gzle0io231unljen9dwbd88zbu03w0" />
 	<meta name="p:domain_verify" content="54a2f03ee61e85df18a9aee867e4baa4"/>
 	<title>Kalisso.com - @yield('title') </title>
