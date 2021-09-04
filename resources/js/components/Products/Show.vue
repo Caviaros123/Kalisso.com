@@ -1,5 +1,6 @@
 <template>
-    <div class="py-6 px-10">
+    <div>
+        <nav-section ></nav-section>
         <!-- <div
             class="flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden"
         >
@@ -399,6 +400,7 @@
             </div>
         </section>
         <!-- ========================= SECTION SUBSCRIBE END// ========================= -->
+    <footer-section ></footer-section>
     </div>
 </template>
 

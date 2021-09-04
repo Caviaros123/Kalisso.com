@@ -7,7 +7,6 @@
 
 @section('extra-css')
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-<link href="{{asset('/css/bootstrap.css')}}" rel="stylesheet" type="text/css"/>
 
 <link href="{{asset('css/ui.css')}}" rel="stylesheet" type="text/css"/>
 <link href="{{asset('/css/responsive.css')}}" rel="stylesheet" media="only screen and (max-width: 1200px)" />

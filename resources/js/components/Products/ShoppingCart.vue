@@ -1,12 +1,13 @@
 <template>
   <section>
+    <nav-section ></nav-section>
     <!-- ========================= SECTION PAGETOP ========================= -->
     <section class="section-pagetop bg-gray">
       <div class="container">
         <div class="ml-3">
           <h2 class="title-page">Mon Panier</h2>
           <h5 class="text-danger">
-            {{ totalProduct }} produits dans votre panier
+            {{ totalProduct }} produit{{totalProduct > 1 ? 's' : ''}} dans votre panier
           </h5>
         </div>
       </div>
@@ -356,6 +357,7 @@
         </div>
       </div>
     </div>
+    <footer-section ></footer-section>
   </section>
 </template>
 

@@ -1,10 +1,4 @@
 <template>
-  <!-- <nav class="py-5 px-10">
-        <ul class="flex">
-            <li class="mr-5 font-semibold"><router-link :to="{name : 'products.index'}">Accueil</router-link></li>
-            <li class="font-semibold"><router-link :to="{name: 'products.shopping'}">Mon Panier <span v-text="this.$store.state.cart.length"></span></router-link></li>
-        </ul>
-    </nav> -->
   <div>
     <b class="screen-overlay"></b>
 
@@ -19,7 +13,7 @@
               <!-- brand-wrap.// -->
             </div>
             <div class="col-xl-6 col-lg-5 col-md-6">
-              <form action="#" class="search-header">
+              <form action="" class="search-header">
                 <div class="input-group w-100">
                   <select
                     class="custom-select border-right"
@@ -27,9 +21,8 @@
                     name="category_name"
                   >
                     <option selected hidden>Catégories</option>
-                    <option value="codex">Special</option>
-                    <option value="comments">Only best</option>
-                    <option value="content">Latest</option>
+                    <option value="codex" v-for="category in categories"
+                     :key="category.id">{{ category.name }}</option>
                   </select>
                   <input
                     type="text"
@@ -65,7 +58,7 @@
                   :to="{name: 'profile.orders'}">
                     <div class="icon-area">
                       <i class="fa fa-store"></i>
-                      <span class="notify" v-text="this.$store.state.cart.length"></span>
+                      <span class="notify" v-text="this.$store.state.orders.length"></span>
                     </div>
                     <small class="text"> Commandes </small>
                   </router-link>
@@ -75,7 +68,7 @@
                   :to="{name: 'profile.wishlist'}">
                     <div class="icon-area">
                       <i class="fa fa-heart"></i>
-                      <span class="notify" v-text="this.$store.state.cart.length"></span>
+                      <span class="notify" v-text="this.$store.state.wishlist.length"></span>
                     </div>
                     <small class="text"> Favoris </small>
                   </router-link>
@@ -204,7 +197,7 @@
 export default {
   data() {
     return {
-      q: ''
+      q: '',
     }
   },
   computed: {
@@ -216,6 +209,12 @@ export default {
         return false;
       }
     },
+    categories() {
+      return this.$store.state.categories;
+    },
+    loggedIn() {
+      return this.$store.getters.loggedIn
+    }
   },
 };
 </script>

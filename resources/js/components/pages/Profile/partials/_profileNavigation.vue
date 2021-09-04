@@ -1,16 +1,16 @@
 <template>
  
-        <aside class="col-md-3">
-            <nav class="list-group">
-                <a class="list-group-item" href="page-profile-main.html"> Account overview  </a>
-                <a class="list-group-item" href="page-profile-address.html"> My Address </a>
-                <a class="list-group-item" href="page-profile-orders.html"> My Orders </a>
-                <a class="list-group-item" href="page-profile-wishlist.html"> My wishlist </a>
-                <a class="list-group-item" href="page-profile-seller.html"> My Selling Items </a>
-                <a class="list-group-item active" href="page-profile-setting.html"> Settings </a>
-                <a class="list-group-item" href="page-index-1.html"> Log out </a>
-            </nav>
-        </aside> <!-- col.// -->
+    <aside class="col-md-3">
+        <nav class="list-group">
+            <a class="list-group-item" @click="activeTab = 'ProfileUser' " href="#"> Account overview  </a>
+            <a class="list-group-item" @click="activeTab = 'ProfileAddress' " href="#"> My Address </a>
+            <a class="list-group-item" @click="activeTab = 'ProfileOrders' " href="#"> My Orders </a>
+            <a class="list-group-item" @click="activeTab = 'ProfileWishlist' " href="#"> My wishlist </a>
+            <a class="list-group-item" @click="activeTab = 'ProfileSeller' " href="#"> My Selling Items </a>
+            <a class="list-group-item active" @click="activeTab = 'ProfileSettings' " href="#"> Settings </a>
+            <router-link :to="{ name: 'logout'}" class="list-group-item" href="#"> Déconnexion </router-link>
+        </nav>
+    </aside> <!-- col.// -->
  
 </template>
 

@@ -109,7 +109,7 @@
                             <td>
                                 <figure class="media">
                                     <div class="img-wrap">
-                                        <a href="@{{route('cart.show', $item->slug)}}">
+                                        <a href="#">
                                             <img src="{{ asset('storage/'.$item->image)}}" class="img-thumbnail img-fluid" style="width: 80px; height: 80px">
                                         </a>
                                     </div>
@@ -129,7 +129,7 @@
                             <td>
                                 <figcaption class="media-body">
                                         <a href="">
-                                            <h5 class="title "><a  href="{{ route('cart.show', $item->slug) }}"><p class="text-truncate">{{$item->name}}</p> </a></h5>
+                                            <h5 class="title "><a  href="#"><p class="text-truncate">{{$item->name}}</p> </a></h5>
                                         </a>
                                 </figcaption>
                             </td>

@@ -1,4 +1,6 @@
 <template>
+    <div class="">
+        <nav-section ></nav-section>
         <!-- ========================= SECTION CONTENT ========================= -->
         <section class="section-content padding-y">
         <div class="container" style="max-width: 720px;">
@@ -131,8 +133,11 @@
 
         </div> <!-- container .//  -->
         </section>
+       
         <!-- ========================= SECTION CONTENT END// ========================= -->
+        <footer-section ></footer-section>
 
+    </div>
 </template>
 
 <script>

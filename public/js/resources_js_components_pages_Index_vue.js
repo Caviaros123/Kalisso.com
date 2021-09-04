@@ -747,6 +747,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   computed: {
     products: function products() {
@@ -841,81 +846,90 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _vm._m(1),
-    _vm._v(" "),
-    _vm._m(2),
-    _vm._v(" "),
-    _vm._m(3),
-    _vm._v(" "),
-    _vm._m(4),
-    _vm._v(" "),
-    _c("section", { staticClass: "padding-bottom-sm" }, [
-      _vm._m(5),
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c("nav-section"),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "row row-sm" },
-        _vm._l(_vm.products, function(product) {
-          return _c(
-            "div",
-            {
-              key: product.id,
-              staticClass: "col-xl-2 col-lg-3 col-md-4 col-6"
-            },
-            [
-              _c(
-                "div",
-                { staticClass: "card card-sm card-product-grid" },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "img-wrap",
-                      attrs: {
-                        to: {
-                          name: "products.show",
-                          params: { slug: product.slug }
-                        }
-                      }
-                    },
-                    [
-                      _c("img", {
-                        staticClass: "fill",
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _vm._m(2),
+      _vm._v(" "),
+      _vm._m(3),
+      _vm._v(" "),
+      _vm._m(4),
+      _vm._v(" "),
+      _c("section", { staticClass: "padding-bottom-sm" }, [
+        _vm._m(5),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "row row-sm" },
+          _vm._l(_vm.products, function(product) {
+            return _c(
+              "div",
+              {
+                key: product.id,
+                staticClass: "col-xl-2 col-lg-3 col-md-4 col-6"
+              },
+              [
+                _c(
+                  "div",
+                  { staticClass: "card card-sm card-product-grid" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "img-wrap",
                         attrs: {
-                          src: "https://kalisso.com/storage/" + product.image
+                          to: {
+                            name: "products.show",
+                            params: { slug: product.slug }
+                          }
                         }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("figcaption", { staticClass: "info-wrap" }, [
-                    _c("a", { staticClass: "title", attrs: { href: "#" } }, [
-                      _vm._v(_vm._s(product.name))
-                    ]),
+                      },
+                      [
+                        _c("img", {
+                          staticClass: "fill",
+                          attrs: {
+                            src: "https://kalisso.com/storage/" + product.image
+                          }
+                        })
+                      ]
+                    ),
                     _vm._v(" "),
-                    _c("div", { staticClass: "price mt-1" }, [
-                      _vm._v(_vm._s(product.price) + " FCFA")
+                    _c("figcaption", { staticClass: "info-wrap" }, [
+                      _c("a", { staticClass: "title", attrs: { href: "#" } }, [
+                        _vm._v(_vm._s(product.name))
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "price mt-1" }, [
+                        _vm._v(_vm._s(product.price) + " FCFA")
+                      ])
                     ])
-                  ])
-                ],
-                1
-              )
-            ]
-          )
-        }),
-        0
-      )
-    ]),
-    _vm._v(" "),
-    _vm._m(6),
-    _vm._v(" "),
-    _vm._m(7),
-    _vm._v(" "),
-    _vm._m(8)
-  ])
+                  ],
+                  1
+                )
+              ]
+            )
+          }),
+          0
+        )
+      ]),
+      _vm._v(" "),
+      _vm._m(6),
+      _vm._v(" "),
+      _vm._m(7),
+      _vm._v(" "),
+      _vm._m(8),
+      _vm._v(" "),
+      _c("footer-section")
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {

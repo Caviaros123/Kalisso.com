@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <nav-section ></nav-section>
     <!-- ========================= SECTION MAIN  ========================= -->
     <section class="section-main padding-y">
       <main class="card">
@@ -731,7 +732,11 @@
     <article class="my-4">
       <img src="/images/banners/ad-sm.png" class="w-100" />
     </article>
+
+    <footer-section ></footer-section>
+
   </div>
+  
 </template>
 
 <script>
@@ -743,4 +748,3 @@ export default {
   },
 };
 </script>
-Carousel
