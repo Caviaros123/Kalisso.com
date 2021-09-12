@@ -144,7 +144,7 @@
                             </dl>
 
                             <div class="form-row  mt-4">
-                                <div class="form-group col-md flex-grow-0">
+                                <!-- <div class="form-group col-md flex-grow-0">
                                     <div class="input-group mb-3 input-spinner">
                                         <div class="input-group-prepend">
                                             <button
@@ -172,7 +172,7 @@
                                             </button>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- col.// -->
                                 <div class="form-group col-md">
                                     <a href="#" class="btn btn-primary" v-if="product.stock > 0" @click="$store.commit('addProductToCart', product)">
@@ -411,6 +411,7 @@ export default {
             counter: 1
         }
     },
+
     computed: {
         product() {
             return this.$store.state.products.find(
@@ -434,6 +435,9 @@ export default {
                 this.counter--;
             }
         }
+    },
+    mounted () {
+        window.scrollTo(0, 0)
     }
 };
 </script>

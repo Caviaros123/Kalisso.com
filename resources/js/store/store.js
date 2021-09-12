@@ -18,6 +18,7 @@ export const store = new Vuex.Store({
         //init data content
         products: [],
         categories: [],
+        homeBanner: [],
     },
     getters: {
         loggedIn(state) {
@@ -25,6 +26,9 @@ export const store = new Vuex.Store({
         }
     },
     mutations: {
+        setBanner(state, data) {
+            state.homeBanner = data;
+        },
         setProducts(state, products) {
             state.products = products;
         },
@@ -157,6 +161,14 @@ export const store = new Vuex.Store({
                     commit("setCategory", response.data.data);
                 })
                 .catch(error => console.error(error));
+        },
+        getHomeBanner({ commit }) {
+            axios
+            .get("/home/getHomeBanner")
+            .then(response => {
+                commit("setBanner", response.data);
+            })
+            .catch(error => console.error(error));
         }
     }
 });

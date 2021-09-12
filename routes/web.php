@@ -23,10 +23,10 @@ Route::any('/{any}', function () {
     return view('layouts.app');
 })->where('any', '^(?!api).*$')->where('any', '^(?!admin).*$');
 
-	// voyager route
-	Route::group(['prefix' => 'admin'], function () {
-		Voyager::routes();
-	});
+// voyager route
+Route::group(['prefix' => 'admin'], function () {
+	Voyager::routes();
+});
 
 // Route::get('auth/google', 'Auth\GoogleController@redirectToGoogle');
 // Route::get('auth/google/callback', 'Auth\GoogleController@handleGoogleCallback');

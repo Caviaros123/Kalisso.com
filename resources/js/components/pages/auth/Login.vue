@@ -8,18 +8,21 @@
         align="center"
         style="max-width: 380px; margin-top: 6%"
       >
-        <img
-          src="/images/logo.png"
-          class="center-block w-50 padding-y img-fluid"
-          alt="Logo Kalisso"
-        />
+        <router-link :to="{ name: 'home' }">
+          <img
+            src="/images/logo.png"
+            class="center-block w-50 padding-y img-fluid"
+            alt="Logo Kalisso"
+          />
+        </router-link>
       </div>
       <div class="card mx-auto" style="max-width: 380px; margin-top: 10px">
-
-        <div v-if="successMessage" class="alert alert-success  text-center m-2">
+        <div v-if="successMessage" class="alert alert-success text-center m-2">
           {{ successMessage }}
         </div>
-        <div v-if="serverError" class="alert alert-danger text-center m-2">{{ serverError }}</div>
+        <div v-if="serverError" class="alert alert-danger text-center m-2">
+          {{ serverError }}
+        </div>
 
         <div class="card-body">
           <h4 class="card-title mb-4">Connexion</h4>
@@ -118,7 +121,7 @@ export default {
           password: this.password,
         })
         .then((response) => {
-            // console.log(response)
+          // console.log(response)
           this.loading = false;
           this.$router.push({ name: "profile.index" });
         })
@@ -126,7 +129,7 @@ export default {
           this.loading = false;
           this.serverError = error.response.data.message;
           this.password = "";
-          this.successMessage = "";          
+          this.successMessage = "";
         });
     },
   },

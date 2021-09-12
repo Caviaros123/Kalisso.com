@@ -7,14 +7,14 @@
 
         <div class="card mb-4">
             <div class="card-body">
-            <h4 class="card-title mb-3">Delivery info</h4>
+            <h4 class="card-title mb-3">Informations de livraison</h4>
 
             <div class="form-row">
                     <div class="form-group col-sm-6">
                         <label class="js-check box active">
                             <input type="radio" name="dostavka" value="option1" checked>
-                            <h6 class="title">Standart delivery</h6>
-                            <p class="text-muted">Free by airline within 20 days</p>
+                            <h6 class="title">Livraison Standard</h6>
+                            <p class="text-muted">Gratuit </p>
                         </label> <!-- js-check.// -->
                     </div>
                     <div class="form-group col-sm-6">

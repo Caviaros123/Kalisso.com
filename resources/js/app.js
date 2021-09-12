@@ -9,9 +9,15 @@ import Footer from "./components/partials/Footer.vue";
 import Carousel from "./components/partials/Carousel.vue";
 import routes from "./routes";
 import { store } from "./store/store";
+import HomeHeader from "./components/pages/home/Header.vue";
+import VueCountdownTimer from "vuejs-countdown-timer";
+
 
 Vue.use(Vuex);
 Vue.use(VueRouter);
+Vue.use(VueCountdownTimer);
+
+
 
 const router = new VueRouter({
     mode: "history",
@@ -43,6 +49,7 @@ router.beforeEach((to, from, next) => {
 Vue.component("nav-section", NavBar);
 Vue.component("carousel", Carousel);
 Vue.component("footer-section", Footer);
+Vue.component("home-header-and-carousel", HomeHeader);
 
 Vue.component("not-found", require("./components/NotFound.vue").default);
 
@@ -79,5 +86,15 @@ const app = new Vue({
             .dispatch("getCategory")
             .then(() => {})
             .catch(error => console.error(error));
+        store
+            .dispatch("getHomeBanner")
+            .then(() => {})
+            .catch(error => console.error(error));
+        if (!store.getters.loggedIn) {
+            store
+                .dispatch("retrieveUserInfo")
+                .then(() => {})
+                .catch(error => console.error(error));
+        }
     }
 });

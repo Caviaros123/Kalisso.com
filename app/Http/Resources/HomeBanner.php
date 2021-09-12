@@ -14,9 +14,12 @@ class HomeBanner extends JsonResource
      */
     public function toArray($request)
     {
+        
         return [
-            'id' => $this->home_banner_id,
-            'image' => $this->home_banner_image
+            'id' => $this->category_banner_id,
+            'category_id' => $this->category_id,
+            'name' => $this->category_banner_name,
+            'image' => $this->category_banner_image
         ];
     }
 }

@@ -21,3 +21,6 @@
 
 <!-- custom javascript -->
 <script src="{{asset('/js/script.js')}}" type="text/javascript"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/vue-form-wizard/dist/vue-form-wizard.min.css">
+<script src="https://unpkg.com/vue-form-wizard/dist/vue-form-wizard.js"></script>

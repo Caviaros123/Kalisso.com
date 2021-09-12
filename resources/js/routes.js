@@ -1,7 +1,19 @@
-import Logout from './components/auth/Logout'
+import Logout from './components/pages/auth/Logout'
 
 
 const routes = [
+
+    {
+        path: "/search/:q",
+        name: "search",
+        props: true,
+        component: () => import("./components/pages/SearchPage.vue")
+    },
+    {
+        path: "/sold",
+        name: "sold",
+        component: () => import("./components/pages/Offers.vue")
+    },
     {
         path: "/",
         name: "home",
@@ -12,6 +24,7 @@ const routes = [
         name: "products.show",
         component: () => import("./components/Products/Show.vue")
     },
+
     {
         path: "/shoppingCart",
         name: "products.shopping",

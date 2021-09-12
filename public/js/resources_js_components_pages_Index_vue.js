@@ -621,137 +621,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   computed: {
     products: function products() {
@@ -782,8 +651,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 ;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
-  _Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _Index_vue_vue_type_template_id_0e66a22c___WEBPACK_IMPORTED_MODULE_0__.render,
   _Index_vue_vue_type_template_id_0e66a22c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
@@ -811,7 +680,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/pages/Index.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -852,6 +721,8 @@ var render = function() {
     [
       _c("nav-section"),
       _vm._v(" "),
+      _c("home-header-and-carousel"),
+      _vm._v(" "),
       _vm._m(0),
       _vm._v(" "),
       _vm._m(1),
@@ -860,10 +731,8 @@ var render = function() {
       _vm._v(" "),
       _vm._m(3),
       _vm._v(" "),
-      _vm._m(4),
-      _vm._v(" "),
       _c("section", { staticClass: "padding-bottom-sm" }, [
-        _vm._m(5),
+        _vm._m(4),
         _vm._v(" "),
         _c(
           "div",
@@ -920,11 +789,11 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
+      _vm._m(5),
+      _vm._v(" "),
       _vm._m(6),
       _vm._v(" "),
       _vm._m(7),
-      _vm._v(" "),
-      _vm._m(8),
       _vm._v(" "),
       _c("footer-section")
     ],
@@ -932,305 +801,6 @@ var render = function() {
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "section-main padding-y" }, [
-      _c("main", { staticClass: "card" }, [
-        _c("div", { staticClass: "card-body" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("aside", { staticClass: "col-lg col-md-3 flex-lg-grow-0" }, [
-              _c("nav", { staticClass: "nav-home-aside" }, [
-                _c("h6", { staticClass: "title-category" }, [
-                  _vm._v("\n                MY MARKETS "),
-                  _c("i", { staticClass: "d-md-none icon fa fa-chevron-down" })
-                ]),
-                _vm._v(" "),
-                _c("ul", { staticClass: "menu-category" }, [
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [
-                      _vm._v("Fashion and clothes")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [
-                      _vm._v("Automobile and motors")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [
-                      _vm._v("Gardening and agriculture")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [
-                      _vm._v("Electronics and tech")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [
-                      _vm._v("Packaginf and printing")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [
-                      _vm._v("Home and kitchen")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [_vm._v("Digital goods")])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", { staticClass: "has-submenu" }, [
-                    _c("a", { attrs: { href: "#" } }, [_vm._v("More items")]),
-                    _vm._v(" "),
-                    _c("ul", { staticClass: "submenu" }, [
-                      _c("li", [
-                        _c("a", { attrs: { href: "#" } }, [
-                          _vm._v("Submenu name")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("li", [
-                        _c("a", { attrs: { href: "#" } }, [
-                          _vm._v("Great submenu")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("li", [
-                        _c("a", { attrs: { href: "#" } }, [
-                          _vm._v("Another menu")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("li", [
-                        _c("a", { attrs: { href: "#" } }, [
-                          _vm._v("Some others")
-                        ])
-                      ])
-                    ])
-                  ])
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-9 col-xl-7 col-lg-7" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "slider-home-banner carousel slide",
-                  attrs: { id: "carousel1_indicator", "data-ride": "carousel" }
-                },
-                [
-                  _c("ol", { staticClass: "carousel-indicators" }, [
-                    _c("li", {
-                      staticClass: "active",
-                      attrs: {
-                        "data-target": "#carousel1_indicator",
-                        "data-slide-to": "0"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("li", {
-                      attrs: {
-                        "data-target": "#carousel1_indicator",
-                        "data-slide-to": "1"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("li", {
-                      attrs: {
-                        "data-target": "#carousel1_indicator",
-                        "data-slide-to": "2"
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "carousel-inner" }, [
-                    _c("div", { staticClass: "carousel-item active" }, [
-                      _c("img", {
-                        attrs: {
-                          src: "images/banners/slide1.jpg",
-                          alt: "First slide"
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "carousel-item" }, [
-                      _c("img", {
-                        attrs: {
-                          src: "images/banners/slide2.jpg",
-                          alt: "Second slide"
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "carousel-item" }, [
-                      _c("img", {
-                        attrs: {
-                          src: "images/banners/slide3.jpg",
-                          alt: "Third slide"
-                        }
-                      })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "carousel-control-prev",
-                      attrs: {
-                        href: "#carousel1_indicator",
-                        role: "button",
-                        "data-slide": "prev"
-                      }
-                    },
-                    [
-                      _c("span", {
-                        staticClass: "carousel-control-prev-icon",
-                        attrs: { "aria-hidden": "true" }
-                      }),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "sr-only" }, [
-                        _vm._v("Previous")
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "carousel-control-next",
-                      attrs: {
-                        href: "#carousel1_indicator",
-                        role: "button",
-                        "data-slide": "next"
-                      }
-                    },
-                    [
-                      _c("span", {
-                        staticClass: "carousel-control-next-icon",
-                        attrs: { "aria-hidden": "true" }
-                      }),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "sr-only" }, [_vm._v("Next")])
-                    ]
-                  )
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md d-none d-lg-block flex-grow-1" }, [
-              _c("aside", { staticClass: "special-home-right" }, [
-                _c(
-                  "h6",
-                  { staticClass: "bg-blue text-center text-white mb-0 p-2" },
-                  [_vm._v("\n                Popular category\n              ")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-banner border-bottom" }, [
-                  _c(
-                    "div",
-                    { staticClass: "py-3", staticStyle: { width: "80%" } },
-                    [
-                      _c("h6", { staticClass: "card-title" }, [
-                        _vm._v("Men clothing")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "btn btn-secondary btn-sm",
-                          attrs: { href: "#" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                    Source now\n                  "
-                          )
-                        ]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("img", {
-                    staticClass: "img-bg",
-                    attrs: { src: "images/items/1.jpg", height: "80" }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-banner border-bottom" }, [
-                  _c(
-                    "div",
-                    { staticClass: "py-3", staticStyle: { width: "80%" } },
-                    [
-                      _c("h6", { staticClass: "card-title" }, [
-                        _vm._v("Winter clothing")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "btn btn-secondary btn-sm",
-                          attrs: { href: "#" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                    Source now\n                  "
-                          )
-                        ]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("img", {
-                    staticClass: "img-bg",
-                    attrs: { src: "images/items/2.jpg", height: "80" }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-banner border-bottom" }, [
-                  _c(
-                    "div",
-                    { staticClass: "py-3", staticStyle: { width: "80%" } },
-                    [
-                      _c("h6", { staticClass: "card-title" }, [
-                        _vm._v("Home inventory")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "btn btn-secondary btn-sm",
-                          attrs: { href: "#" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                    Source now\n                  "
-                          )
-                        ]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("img", {
-                    staticClass: "img-bg",
-                    attrs: { src: "images/items/6.jpg", height: "80" }
-                  })
-                ])
-              ])
-            ])
-          ])
-        ])
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -1250,13 +820,13 @@ var staticRenderFns = [
             _c("div", [
               _c("span", { staticClass: "num" }, [_vm._v("04")]),
               _vm._v(" "),
-              _c("small", [_vm._v("Days")])
+              _c("small", [_vm._v("Jours")])
             ]),
             _vm._v(" "),
             _c("div", [
               _c("span", { staticClass: "num" }, [_vm._v("12")]),
               _vm._v(" "),
-              _c("small", [_vm._v("Hours")])
+              _c("small", [_vm._v("Heures")])
             ]),
             _vm._v(" "),
             _c("div", [

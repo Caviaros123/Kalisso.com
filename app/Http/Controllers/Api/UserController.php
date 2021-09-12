@@ -557,10 +557,15 @@ class UserController extends Controller
     }
 
     // API LOGIN
-    public function login()
+    public function login( Request $request)
     {
 
-        if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
+        $login = $request->validate([
+            'email' => 'required|string|email',
+            'password' => 'required|string',
+        ]);
+
+        if (Auth::attempt( $login )) {
 
             $user = Auth::user();
             $success['token'] = $user->createToken(request('device_name'))->accessToken;
@@ -726,7 +731,6 @@ class UserController extends Controller
         }
     }
 
-
     /**
      * Register api.
      *
@@ -755,7 +759,6 @@ class UserController extends Controller
                     'otp' => null,
                     'phone_verified_at' => NOW()
                 ]);
-                // code...
             }
 
             return response()->json([

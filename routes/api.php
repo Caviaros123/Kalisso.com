@@ -64,7 +64,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::post('home/getFlashsale','Api\FlashSaleController@getFlashsale');
 
     //BANNER CONTROLLER
-    Route::post('home/getHomeBanner','Api\BannerController@getHomeBanner');
+    Route::get('home/getHomeBanner','Api\BannerController@getHomeBanner');
 
     //CART CONTROLLER
     Route::post('shopping_cart/getShoppingCart', 'Api\CartController@getShoppingCart');

@@ -374,10 +374,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  data: {
-    coupon: "",
-    qty: ""
+  name: "cart",
+  data: function data() {
+    return {
+      coupon: "",
+      qty: "",
+      counter: 1
+    };
   },
   computed: {
     getCart: function getCart() {
@@ -392,10 +427,24 @@ __webpack_require__.r(__webpack_exports__);
       return this.$store.state.cart.reduce(function (acc, current) {
         return acc + current.price * current.qty;
       }, 0);
+    }
+  },
+  methods: {
+    onChange: function onChange(event) {
+      console.log(event.target.value);
     },
-    methods: {
-      onChange: function onChange(event) {
-        console.log(event.target.value);
+    incrementCounter: function incrementCounter(product) {
+      if (this.counter >= 10) {
+        this.counter = 10;
+      } else {
+        this.counter++;
+      }
+    },
+    decrementCounter: function decrementCounter(product) {
+      if (this.counter <= 1) {
+        this.counter = 1;
+      } else {
+        this.counter--;
       }
     }
   }
@@ -423,8 +472,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 ;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
-  _ShoppingCart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ShoppingCart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _ShoppingCart_vue_vue_type_template_id_066dc0b8___WEBPACK_IMPORTED_MODULE_0__.render,
   _ShoppingCart_vue_vue_type_template_id_066dc0b8___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
@@ -452,7 +501,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ShoppingCart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ShoppingCart.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Products/ShoppingCart.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ShoppingCart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ShoppingCart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -503,7 +552,7 @@ var render = function() {
                   _vm._s(_vm.totalProduct) +
                   " produit" +
                   _vm._s(_vm.totalProduct > 1 ? "s" : "") +
-                  " dans votre panier\n        "
+                  " dans\n          votre panier\n        "
               )
             ])
           ])
@@ -581,65 +630,102 @@ var render = function() {
                               _vm._v(" "),
                               _c("td", [
                                 _c(
-                                  "select",
+                                  "div",
                                   {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.qty,
-                                        expression: "qty"
-                                      }
-                                    ],
-                                    staticClass: "form-control",
-                                    on: {
-                                      change: [
-                                        function($event) {
-                                          var $$selectedVal = Array.prototype.filter
-                                            .call(
-                                              $event.target.options,
-                                              function(o) {
-                                                return o.selected
-                                              }
-                                            )
-                                            .map(function(o) {
-                                              var val =
-                                                "_value" in o
-                                                  ? o._value
-                                                  : o.value
-                                              return val
-                                            })
-                                          _vm.qty = $event.target.multiple
-                                            ? $$selectedVal
-                                            : $$selectedVal[0]
-                                        },
-                                        function($event) {
-                                          return _vm.onChange(this.value)
-                                        }
-                                      ]
-                                    }
+                                    staticClass: "form-group col-md flex-grow-0"
                                   },
-                                  _vm._l(10, function(n) {
-                                    return _c(
-                                      "option",
-                                      _vm._b(
-                                        { key: n, domProps: { value: n } },
-                                        "option",
-                                        n == product.qty
-                                          ? (_vm.qty = product.qty)
-                                          : null,
-                                        false
-                                      ),
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "input-group mb-3 input-spinner"
+                                      },
                                       [
-                                        _vm._v(
-                                          "\n                        " +
-                                            _vm._s(n) +
-                                            "\n                      "
+                                        _c(
+                                          "div",
+                                          { staticClass: "input-group-append" },
+                                          [
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass: "btn btn-light",
+                                                attrs: {
+                                                  type: "button",
+                                                  id: "button-minus"
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.decrementCounter(
+                                                      { product: product }
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                            −\n                          "
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("input", {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value: _vm.counter,
+                                              expression: "counter"
+                                            }
+                                          ],
+                                          staticClass: "form-control",
+                                          attrs: { type: "text" },
+                                          domProps: { value: _vm.counter },
+                                          on: {
+                                            input: function($event) {
+                                              if ($event.target.composing) {
+                                                return
+                                              }
+                                              _vm.counter = $event.target.value
+                                            }
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass: "input-group-prepend"
+                                          },
+                                          [
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass: "btn btn-light",
+                                                attrs: {
+                                                  type: "button",
+                                                  id: "button-plus"
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.incrementCounter(
+                                                      { product: product }
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                            +\n                          "
+                                                )
+                                              ]
+                                            )
+                                          ]
                                         )
                                       ]
                                     )
-                                  }),
-                                  0
+                                  ]
                                 )
                               ]),
                               _vm._v(" "),

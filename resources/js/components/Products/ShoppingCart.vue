@@ -1,13 +1,14 @@
 <template>
   <section>
-    <nav-section ></nav-section>
+    <nav-section></nav-section>
     <!-- ========================= SECTION PAGETOP ========================= -->
     <section class="section-pagetop bg-gray">
       <div class="container">
         <div class="ml-3">
           <h2 class="title-page">Mon Panier</h2>
           <h5 class="text-danger">
-            {{ totalProduct }} produit{{totalProduct > 1 ? 's' : ''}} dans votre panier
+            {{ totalProduct }} produit{{ totalProduct > 1 ? "s" : "" }} dans
+            votre panier
           </h5>
         </div>
       </div>
@@ -65,7 +66,7 @@
                       </figure>
                     </td>
                     <td>
-                      <select  v-model="qty" @change="onChange(this.value)" class="form-control">
+                      <!-- <select  v-model="qty" @change="onChange(this.value)" class="form-control">
                         <option
                           v-for="n in 10"
                           :key="n"
@@ -74,7 +75,37 @@
                         >
                           {{ n }}
                         </option>
-                      </select>
+                      </select> -->
+
+                      <div class="form-group col-md flex-grow-0">
+                        <div class="input-group mb-3 input-spinner">
+                          <div class="input-group-append">
+                            <button
+                              class="btn btn-light"
+                              type="button"
+                              id="button-minus"
+                              @click="decrementCounter({product})"
+                            >
+                              &minus;
+                            </button>
+                          </div>
+                          <input
+                            type="text"
+                            class="form-control"
+                            v-model="counter"
+                          />
+                          <div class="input-group-prepend">
+                            <button
+                              class="btn btn-light"
+                              type="button"
+                              id="button-plus"
+                              @click="incrementCounter({product})"
+                            >
+                              +
+                            </button>
+                          </div>
+                        </div>
+                      </div>
                     </td>
                     <td>
                       <div class="price-wrap">
@@ -357,15 +388,19 @@
         </div>
       </div>
     </div>
-    <footer-section ></footer-section>
+    <footer-section></footer-section>
   </section>
 </template>
 
 <script>
 export default {
-  data: {
+  name: "cart",
+  data() {
+    return {
       coupon: "",
       qty: "",
+      counter: 1,
+    };
   },
   computed: {
     getCart() {
@@ -385,10 +420,25 @@ export default {
         0
       );
     },
-    methods: {
-      onChange(event) {
-        console.log(event.target.value);
-      },
+  },
+
+  methods: {
+    onChange(event) {
+      console.log(event.target.value);
+    },
+    incrementCounter(product) {
+      if (this.counter >= 10) {
+        this.counter = 10;
+      } else {
+        this.counter++;
+      }
+    },
+    decrementCounter(product) {
+      if (this.counter <= 1) {
+        this.counter = 1;
+      } else {
+        this.counter--;
+      }
     },
   },
 };
