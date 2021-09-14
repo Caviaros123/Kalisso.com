@@ -3,7 +3,9 @@ import Vuex from "vuex";
 import axios from "axios";
 
 Vue.use(Vuex);
+
 axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1";
+// axios.defaults.headers.token
 
 export const store = new Vuex.Store({
     state: {
@@ -89,11 +91,7 @@ export const store = new Vuex.Store({
         register(context, data) {
             return new Promise((resolve, reject) => {
                 axios
-                    .post("/register", {
-                        name: data.name,
-                        email: data.email,
-                        password: data.password
-                    })
+                    .post("/register", data)
                     .then(response => {
                         resolve(response);
                     })

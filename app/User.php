@@ -13,13 +13,15 @@ class User extends \TCG\Voyager\Models\User implements MustVerifyEmail
 {
     use HasApiTokens, Likable, Notifiable;
 
+    protected $guarded = ['users'];
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'lastname', 'otp', 'phone', 'email', 'password', 'isSeller', 'avatar',
+       'name', 'lastname', 'otp', 'phone', 'email', 'password', 'isSeller', 'avatar',
     ];
 
     public function searchableAs()

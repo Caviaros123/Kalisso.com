@@ -20,7 +20,7 @@ use App\Http\Resources\GetAddress;
 use App\Http\Resources\GetOrderList;
 use Illuminate\Support\Facades\DB;
 use Image;
-
+use GuzzleHttp\Exception\ServerException;
 
 class UserController extends Controller
 {
@@ -557,7 +557,7 @@ class UserController extends Controller
     }
 
     // API LOGIN
-    public function login( Request $request)
+    public function login(Request $request)
     {
 
         $login = $request->validate([
@@ -565,7 +565,7 @@ class UserController extends Controller
             'password' => 'required|string',
         ]);
 
-        if (Auth::attempt( $login )) {
+        if (Auth::attempt($login)) {
 
             $user = Auth::user();
             $success['token'] = $user->createToken(request('device_name'))->accessToken;
@@ -621,7 +621,7 @@ class UserController extends Controller
     public function sendOtp(Request $request)
     {
 
-        $otp = rand(1000, 9999);
+        $otp = rand(100000, 999999);
         $phone =  phoneNumber($request->phone);
         $contents = '<#> Kalisso.com: Votre code de vérificattion est ' . $otp;
         $user =  User::where('phone', $phone)->update([
@@ -632,11 +632,6 @@ class UserController extends Controller
                 'success' => true,
                 'user' => $otp
             ], 200);
-        } elseif ($user == 0) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Utilisateur introuvable'
-            ]);
         } elseif ($request->status == 'signUpWithPhone' && $user == 0) {
             return response()->json([
                 'success' => false,
@@ -711,7 +706,7 @@ class UserController extends Controller
 
         if ($request->status == 'signUpWithEmail') {
             $user = User::where('email', $request->email)->first();
-            $otp = rand(1000, 9999);
+            $otp = rand(100000, 999999);
         } else if ($request->status == 'signUpWithPhone') {
             $user = User::where('phone', $request->phone)->first();
         }
@@ -738,50 +733,55 @@ class UserController extends Controller
      */
     public function register(Request $request)
     {
+
+        $request->validate([
+            'email' => 'string|unique:users,email',
+            'phone' => 'required|numeric|min:9|unique:users,phone',
+            'password' => 'required|string|min:8|confirmed', // regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/'
+            'isSeller' => 'boolean',
+            'terms' => 'required|boolean:true',
+        ], [
+            'email.unique' => 'Cette email est déja utilisé',
+            'email.string' => 'L\'email ne peut pas être vide',
+            'phone.unique' => 'Ce numéro de téléphone est déja utilisé',
+            'phone.numeric' => 'Veuillez saisir un numéro valide',
+            'phone.min' => 'Le numéro de téléphone est trop court',
+            'password.string' => 'Ce champ ne peut être vide',
+            'password.min' => 'Le mot de passe est trop court',
+            'password.confirmed' => 'Les mot de passe ne sont pas identiques',
+        ]);
+
+        // init
+        $otp = rand(100000, 999999);
+
         if ($request->status == 'registerWithPhone') {
 
-            $validator = Validator::make($request->all(), [
-                'phone' => 'required|numeric',
-            ]);
-
-            if ($validator->fails()) {
-                return response()->json([
-                    'success' => false,
-                    'message' => $validator->errors(),
-                ], 401);
-            }
-            
-            $user = User::where('phone', $request->phone)->first();
-
-            if ($user = User::where('phone', $request->phone)->first()) {
-
-                $update = User::where('phone', $request->phone)->update([
-                    'otp' => null,
-                    'phone_verified_at' => NOW()
+            try {
+                $user = User::create([
+                    'name' => $request['name'],
+                    'avatar' => 'users/default.png',
+                    'lastname' => $request['lastname'],
+                    'phone' =>  phoneNumber($request->phone),
+                    'otp' =>   $otp,
+                    'isSeller' => $request->isSeller ? 1 : 0,
+                    'password' => Hash::make($request['password']),
+                    'created_at' => NOW(),
+                    'updated_at' => NOW(),
                 ]);
-            }
 
-            return response()->json([
-                'success' => true,
-                'message' => 'Félicitation vous êtes inscrit sur la plus grande\n plateforme de vente en ligne au Congo-Brazzaville',
-                'data' => $user
-            ]);
-        } elseif ($request->status == 'signUpWithEmail') {
+                if ($user) {
+                    return $user;
+                }
 
-            $validator = Validator::make($request->all(), [
-                'name' => 'required',
-                'lastname' => 'required',
-                'phone' => 'required|unique:users',
-                'email' => 'required|email|unique:users',
-                'password' => 'required'
-            ]);
-
-            if ($validator->fails()) {
                 return response()->json([
-                    'success' => false,
-                    'message' => $validator->errors(),
-                ], 401);
+                    'success' => true,
+                    'message' => 'Félicitation vous êtes inscrit sur la plus grande\n plateforme de vente en ligne au Congo-Brazzaville',
+                    'data' => $user
+                ]);
+            } catch (ServerException $e) {
+                return $e;
             }
+        } elseif ($request->status == 'signUpWithEmail') {
 
             $request->merge([
                 'email_verified_at' => NOW(),
@@ -800,6 +800,8 @@ class UserController extends Controller
                 'user' => $user
             ]);
         }
+
+        return response()->json($request->all(), 200);
     }
 
     // logout
@@ -807,7 +809,7 @@ class UserController extends Controller
     {
 
         if (Auth::user()) {
-            Auth::user()->tokens->each(function($token, $key){
+            Auth::user()->tokens->each(function ($token, $key) {
                 $token->delete();
             });
 
@@ -845,9 +847,9 @@ class UserController extends Controller
         $orders = Order::where('user_id', auth()->id())->get();
         $wishlist = DB::table('tbl_wishlist')->where('user_id', auth()->id())->get();
         $address = DB::table('tbl_address')
-                        ->where('user_id', auth()->id())
-                        ->where('default_address', 1)
-                        ->get();
+            ->where('user_id', auth()->id())
+            ->where('default_address', 1)
+            ->get();
 
         return response()->json([
             'success' => true,

@@ -51,88 +51,33 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-                'name' => ['required', 'string', 'max:255'],
-                'lastname' => ['required', 'string', 'max:255'],
-                'phone' => ['required', 'unique:users'],
-                'code' => ['required'],
-                'password' => ['required', 'string', 'min:8', 'confirmed'],
-            ]);
-        }
+            'name' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'unique:users'],
+            'email' => ['unique:users'],
+            'code' => ['required'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+    }
 
-        /**
-         * Create a new user instance after a valid registration.
-         *
-         * @param  array  $data
-         * @return \App\User
-         */
-        protected function create(array $data)
-        { 
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return \App\User
+     */
+    protected function create(array $data)
+    {
 
-            //init
-            $otp = rand(100000, 999999);
-            $message = "Bienvenue sur Kalisso ".$data['lastname'].", ton code de vérification est : $otp";
-            $phone_number = phoneNumber($data['code'].$data['phone']);
-            $seller = isset($data['isSeller']) ? '1' : '0';
-
-            // session(['wirepick_request_id' => $code]);
-
-            //SEND SMS FOR VERIFICATION
-            // try {
-
-            //     $sms = array(
-            //         'client'=>    'caviaros123',
-            //         'password'=>    'FilsdeDieu1995@',
-            //                     'phone'=>    $phone_number,// The number that will receive the text message
-            //                     'from'=>    'Kalisso.com',// The sender of the SMS
-            //                     'affiliate' => '999',
-            //                     'text' => utf8_decode(urldecode($message)), // The content of the text message
-            //                 );
-
-            //     $context = stream_context_create(array(
-            //         'http' => array(
-            //             'method' => 'POST',
-            //             'header'  => "Content-type: application/x-www-form-urlencoded",
-            //             'content' => http_build_query($sms),
-            //         )));
-
-            //     $response = file_get_contents("https://api.wirepick.com/httpsms/send", false, $context);
-
-            // try {
-
-            //             $message = "Un nouvel utilisateur s'est inscrit sur kalisso.com";
-            //             $sms = array(
-            //             'client'=>    'caviaros123',
-            //             'password'=>    'FilsdeDieu1995@',
-            //             'phone'=>    '242064272080',// The number that will receive the text message
-            //             'from'=>    'Kalisso.com',// The sender of the SMS
-            //             'affiliate' => '999',
-            //             'text' => utf8_decode(urldecode($message)), // The content of the text message
-            //             );
-
-            //         $context = stream_context_create(array(
-            //             'http' => array(
-            //                 'method' => 'POST',
-            //                 'header'  => "Content-type: application/x-www-form-urlencoded",
-            //                 'content' => http_build_query($sms),
-            //             )));
-
-            //         $response = file_get_contents("https://api.wirepick.com/httpsms/send", false, $context);
-                
-            // } catch (Exception $e) {
-            //         return back()->withErrors(['Une erreur est survenue lors de l\'envoi du message '.$e]);
-                
-            // }
-
-            // } catch (Exception $e) {
-
-            //                 // dd($th);
-            //     return back()->withErrors(['Une erreur est survenue lors de l\'envoi du message de verification'.$e]);
-
-            // }
+        //init
+        $otp = rand(100000, 999999);
+        $message = "Bienvenue sur Kalisso " . $data['lastname'] . ", ton code de vérification est : $otp";
+        $phone_number = phoneNumber($data['code'] . $data['phone']);
+        $seller = isset($data['isSeller']) ? '1' : '0';
 
 
 
-        if (isset($data['isSeller'] )) {
+        if (isset($data['isSeller'])) {
 
             //session()->flash('success_message', '<h1 class="display-3">Bonjour '.$data['name'].'</h1><br>'.'Bienvenu sur la plus grande boutique du Congo-Brazzaville'.$response);
 
@@ -156,8 +101,5 @@ class RegisterController extends Controller
                 'password' => Hash::make($data['password']),
             ]);
         }
-
     }
-
-  
 }

@@ -11,13 +11,51 @@ import routes from "./routes";
 import { store } from "./store/store";
 import HomeHeader from "./components/pages/home/Header.vue";
 import VueCountdownTimer from "vuejs-countdown-timer";
+import VueTelInput from "vue-tel-input";
+import "vue-tel-input/dist/vue-tel-input.css";
+import BootstrapVue from "bootstrap-vue";
+import {
+    ValidationObserver,
+    ValidationProvider,
+    extend,
+    localize
+} from "vee-validate";
+import fr from "vee-validate/dist/locale/fr.json";
+import * as rules from "vee-validate/dist/rules";
+import OtpInput from "@bachdgvn/vue-otp-input";
+import CountdownTimer from "vuejs-countdown-timer";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import 'firebase/auth';
 
+// Install VeeValidate rules and localization
+Object.keys(rules).forEach(rule => {
+    extend(rule, rules[rule]);
+});
 
+localize("fr", fr);
+
+Vue.use(CountdownTimer);
+Vue.use(BootstrapVue);
+Vue.use(VueTelInput);
 Vue.use(Vuex);
 Vue.use(VueRouter);
 Vue.use(VueCountdownTimer);
+Vue.config.productionTip = true;
 
+const firebaseConfig = {
+    apiKey: "AIzaSyCc2BBFgf_osbxj-5-E_KQKEV4SuATFuRI",
+    authDomain: "kalisso-298808.firebaseapp.com",
+    projectId: "kalisso-298808",
+    storageBucket: "kalisso-298808.appspot.com",
+    messagingSenderId: "84460790081",
+    appId: "1:84460790081:web:5fd6866e8ca6be405601c0",
+    measurementId: "G-GYX9DFZG8J",
+};
 
+// Initialize Firebase
+const appFire = initializeApp(firebaseConfig);
+const analytics = getAnalytics(appFire);
 
 const router = new VueRouter({
     mode: "history",
@@ -46,10 +84,14 @@ router.beforeEach((to, from, next) => {
     }
 });
 
+Vue.component("ValidationObserver", ValidationObserver);
+Vue.component("ValidationProvider", ValidationProvider);
+
 Vue.component("nav-section", NavBar);
 Vue.component("carousel", Carousel);
 Vue.component("footer-section", Footer);
 Vue.component("home-header-and-carousel", HomeHeader);
+Vue.component("v-otp-input", OtpInput);
 
 Vue.component("not-found", require("./components/NotFound.vue").default);
 
@@ -74,6 +116,7 @@ Vue.mixin({
 });
 
 const app = new Vue({
+    analytics,
     router,
     store,
     el: "#app",
@@ -90,7 +133,7 @@ const app = new Vue({
             .dispatch("getHomeBanner")
             .then(() => {})
             .catch(error => console.error(error));
-        if (!store.getters.loggedIn) {
+        if (store.getters.loggedIn) {
             store
                 .dispatch("retrieveUserInfo")
                 .then(() => {})

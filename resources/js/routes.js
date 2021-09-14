@@ -2,7 +2,15 @@ import Logout from './components/pages/auth/Logout'
 
 
 const routes = [
-
+    {
+        path: "/phone/verify",
+        name: "phone.verify",
+        props: true,
+        meta: {
+            requiresVisitor: true
+        },
+        component: () => import("./components/pages/PhoneVerify.vue")
+    },
     {
         path: "/search/:q",
         name: "search",
