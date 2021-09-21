@@ -132,6 +132,10 @@
                   <!-- <i class="fa fa-refresh" aria-hidden="true"></i> -->
                 </template>
               </vue-countdown-timer>
+              <div
+                id="recaptcha-container"
+                style="background-color: #1b1a1a; width: 300px; margin: auto"
+              ></div>
             </div>
             <!-- form-group// -->
           </form>
@@ -154,9 +158,8 @@
 </template>
 
 <script>
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
+import firebase from "firebase/app";
+import 'firebase/auth';  
 
 export default {
   props: {
@@ -167,8 +170,8 @@ export default {
   components: {},
   data() {
     return {
-      phone: this.phoneNumber || null,
-      endAt: new Date().getTime() + 2000,
+      phone: this.phoneNumber || "+242064272080",
+      endAt: new Date().getTime() + 60000,
       startAt: new Date().getTime(),
       serverError: "",
       successMessage: "",
@@ -177,15 +180,43 @@ export default {
       //phone init
       confirmationResult: null,
       otp: null,
+      smsSent: false,
       recaptchaVerifier: null,
       recaptchaWidgetId: null,
       confirmResult: null,
       appVerifier: "",
+      coderesult: null,
     };
   },
-  mounted() {},
   setup() {
-    return {};
+    this.sendOtp();
+  },
+  mounted() {
+    firebase.auth().useDeviceLanguage();
+    // this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier({
+    //   size: "invisible",
+    //   callback: (response) => {
+    //     // reCAPTCHA solved, allow signInWithPhoneNumber.
+    //     console.log(response);
+    //   },
+    // });
+
+    this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+      "recaptcha-container",
+      {
+        size: "invisible",
+        callback: function (response) {
+          // reCAPTCHA solved, allow signInWithPhoneNumber.
+          // ...
+        },
+        "expired-callback": function () {
+          // Response expired. Ask user to solve reCAPTCHA again.
+          // ...
+        },
+      }
+    );
+    //
+    this.appVerifier = window.recaptchaVerifier;
   },
   methods: {
     resendOtpCode() {
@@ -200,7 +231,7 @@ export default {
       console.log(x);
     },
     handleOnComplete(value) {
-      verifyCode();
+      this.verifyOtp(value);
       console.log("OTP completed: ", value);
     },
     handleOnChange(value) {
@@ -210,76 +241,52 @@ export default {
       this.$refs.otpInput.clearInput();
     },
     sendOtp() {
+      this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+        "recaptcha-container"
+      );
+      this.recaptchaVerifier.render().then((widgetId) => {
+        this.recaptchaWidgetId = widgetId;
+      });
+
       if (this.phoneNumber) {
         //
         let countryCode = "+242064272080"; //congo
-        let phoneNumber = countryCode || this.phoneNumber;
-        //
-        let appVerifier = this.appVerifier;
-        //
+        let phone = this.phoneNumber || countryCode;
         firebase
           .auth()
-          .signInWithPhoneNumber(phoneNumber, appVerifier)
-          .then(function (confirmationResult) {
-            // SMS sent. Prompt user to type the code from the message, then sign the
-            // user in with confirmationResult.confirm(code).
-            window.confirmationResult = confirmationResult;
-            //
-            alert("SMS sent");
+          .signInWithPhoneNumber(phone, this.recaptchaVerifier)
+          .then((confirmationResult) => {
+            this.confirmResult = confirmationResult;
+            console.log(this.confirmResult);
+            alert("Sms Sent!");
+            this.smsSent = true;
           })
-          .catch(function (error) {
-            // Error; SMS not sent
-            // ...
-            alert("Error ! SMS not sent");
+          .catch((error) => {
+            console.log("Sms not sent", error.message);
           });
       }
     },
     //
-    verifyOtp() {
+    verifyOtp(value) {
       if (this.phoneNumber) {
-        //
-        let vm = this;
-        let code = this.otp;
-        //
-        window.confirmationResult
+        let code = value;
+
+        this.confirmResult
           .confirm(code)
-          .then(function (result) {
-            // User signed in successfully.
+          .then((result) => {
+            alert("Registeration Successfull!", result);
+            this.gotonext();
             var user = result.user;
-            // ...
-            //route to set password !
-            vm.$router.push({ path: "/setPassword" });
+            console.log(user);
           })
-          .catch(function (error) {
-            // User couldn't sign in (bad verification code?)
-            // ...
+          .catch((error) => {
+            console.log(error);
           });
       }
     },
-    initReCaptcha() {
-      setTimeout(() => {
-        let vm = this;
-        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
-          "recaptcha-container",
-          {
-            size: "invisible",
-            callback: function (response) {
-              // reCAPTCHA solved, allow signInWithPhoneNumber.
-              // ...
-            },
-            "expired-callback": function () {
-              // Response expired. Ask user to solve reCAPTCHA again.
-              // ...
-            },
-          }
-        );
-        //
-        this.appVerifier = window.recaptchaVerifier;
-      }, 1000);
-    },
   },
   created() {
-    this.initReCaptcha();
+    // this.initReCaptcha();
   },
 };
 </script>

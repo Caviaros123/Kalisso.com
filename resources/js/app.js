@@ -24,9 +24,8 @@ import fr from "vee-validate/dist/locale/fr.json";
 import * as rules from "vee-validate/dist/rules";
 import OtpInput from "@bachdgvn/vue-otp-input";
 import CountdownTimer from "vuejs-countdown-timer";
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import 'firebase/auth';
+import firebase from "firebase";
+import 'firebase/auth'
 
 // Install VeeValidate rules and localization
 Object.keys(rules).forEach(rule => {
@@ -41,7 +40,7 @@ Vue.use(VueTelInput);
 Vue.use(Vuex);
 Vue.use(VueRouter);
 Vue.use(VueCountdownTimer);
-Vue.config.productionTip = true;
+Vue.config.productionTip = false;
 
 const firebaseConfig = {
     apiKey: "AIzaSyCc2BBFgf_osbxj-5-E_KQKEV4SuATFuRI",
@@ -54,11 +53,11 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const appFire = initializeApp(firebaseConfig);
-const analytics = getAnalytics(appFire);
+firebase.initializeApp(firebaseConfig);
 
 const router = new VueRouter({
     mode: "history",
+    base:process.env.BASE_URL,
     routes
 });
 
@@ -116,7 +115,6 @@ Vue.mixin({
 });
 
 const app = new Vue({
-    analytics,
     router,
     store,
     el: "#app",

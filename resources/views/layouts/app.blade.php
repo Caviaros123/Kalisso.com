@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="author" content="Kalisso.com">
-	<meta name="accueil" content="Achat et vente en ligne parmi des millions de produits en stock. Livraison gratuite à partir de 2.000Fcfa. Vos articles à petits prix : culture, high-tech, mode, jouets, sport ...">
+	<meta name="accueil" content="Achat et vente en ligne parmi des millions de produits en stock. Livraison gratuite à partir de 2.000Fcfa d'achats. Vos articles à petits prix : culture, high-tech, mode, jouets, sport ...">
     <meta http-equiv="pragma" content="no-cache" />
 
     <!-- CSRF Token -->

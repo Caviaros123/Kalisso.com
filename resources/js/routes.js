@@ -3,6 +3,15 @@ import Logout from './components/pages/auth/Logout'
 
 const routes = [
     {
+        path: "/category/:slug",
+        name: "category.index",
+        props: true,
+        meta: {
+            requiresVisitor: true
+        },
+        component: () => import("./components/pages/PhoneVerify.vue")
+    },
+    {
         path: "/phone/verify",
         name: "phone.verify",
         props: true,
@@ -44,6 +53,7 @@ const routes = [
     {
         path: "/account/profile",
         name: "profile.index",
+        props: true,
         meta: {
             requiresAuth: true
         },

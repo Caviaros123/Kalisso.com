@@ -13,7 +13,11 @@
               <!-- brand-wrap.// -->
             </div>
             <div class="col-xl-6 col-lg-5 col-md-6">
-              <form action="" class="search-header" @submit.prevent="searchPage">
+              <form
+                action=""
+                class="search-header"
+                @submit.prevent="searchPage"
+              >
                 <div class="input-group w-100">
                   <select
                     class="custom-select border-right"
@@ -142,8 +146,6 @@
                 </a>
                 <div class="dropdown-menu dropdown-large">
                   <nav class="row">
-                    
-
                     <div class="col-6" v-if="categories.slice(0, 10)">
                       <router-link
                         :to="{ name: '' }"
@@ -154,16 +156,16 @@
                     </div>
                     <div class="col-6" v-if="categories.slice(10, 25)">
                       <router-link
-                        
                         v-for="(category, index) in categories.slice(10, 25)"
                         :key="index"
                         :to="{ name: 'category.show', params: index }"
                         >{{ category.name }}</router-link
                       >
-                    
+
                       <a href="/category" target="_blank"
-                        >Voir toutes les catégories <i class="fa fa-caret-right pl-3"></i></a
-                      >
+                        >Voir toutes les catégories
+                        <i class="fa fa-caret-right pl-3"></i
+                      ></a>
                     </div>
                   </nav>
                   <!--  row end .// -->
@@ -171,22 +173,34 @@
                 <!--  dropdown-menu dropdown-large end.// -->
               </li>
               <li class="nav-item">
-                <router-link class="nav-link" :to="{ name: 'sold' }" >Soldes</router-link>
+                <router-link class="nav-link" :to="{ name: 'sold' }"
+                  >Soldes</router-link
+                >
               </li>
               <li class="nav-item">
-                <router-link class="nav-link" :to="{ name: 'travel' }" >Voyages</router-link>
+                <router-link class="nav-link" :to="{ name: 'travel' }"
+                  >Voyages</router-link
+                >
               </li>
               <li class="nav-item">
-                <router-link class="nav-link" :to="{ name: 'store.all' }" >Nos boutiques</router-link>
+                <router-link class="nav-link" :to="{ name: 'store.all' }"
+                  >Nos boutiques</router-link
+                >
               </li>
               <li class="nav-item">
-                <router-link class="nav-link" :to="{ name: 'sell' }" >Vendez avec nous</router-link>
+                <router-link class="nav-link" :to="{ name: 'sell' }"
+                  >Vendez avec nous</router-link
+                >
               </li>
               <li class="nav-item">
-                <router-link class="nav-link" :to="{ name: 'contact' }" >Contactez-nous</router-link>
+                <router-link class="nav-link" :to="{ name: 'contact' }"
+                  >Contactez-nous</router-link
+                >
               </li>
               <li class="nav-item">
-                <router-link class="nav-link" :to="{ name: 'about' }" >A propos</router-link>
+                <router-link class="nav-link" :to="{ name: 'about' }"
+                  >A propos</router-link
+                >
               </li>
             </ul>
             <ul class="navbar-nav ml-md-auto">
@@ -199,7 +213,6 @@
                 >
               </li>
               <li class="nav-item dropdown">
-                
                 <a
                   class="nav-link dropdown-toggle active btn btn-danger"
                   href="http://example.com"
@@ -207,10 +220,27 @@
                   ><i class="fas fa-map-marker-alt"></i> {{ location }}</a
                 >
                 <div class="dropdown-menu dropdown-menu-right">
-                  <a class="dropdown-item" @click="location = 'Brazzaville'" href="#">Brazzaville</a>
-                  <a class="dropdown-item" @click="location = 'Pointe-Noire'" href="#">Pointe-Noire</a>
-                  <a class="dropdown-item" @click="location = 'Dolisie'" href="#">Dolisie</a>
-                  <a class="dropdown-item" @click="location = 'Nkayi'" href="#">Nkayi</a>
+                  <a
+                    class="dropdown-item"
+                    @click="location = 'Brazzaville'"
+                    href="#"
+                    >Brazzaville</a
+                  >
+                  <a
+                    class="dropdown-item"
+                    @click="location = 'Pointe-Noire'"
+                    href="#"
+                    >Pointe-Noire</a
+                  >
+                  <a
+                    class="dropdown-item"
+                    @click="location = 'Dolisie'"
+                    href="#"
+                    >Dolisie</a
+                  >
+                  <a class="dropdown-item" @click="location = 'Nkayi'" href="#"
+                    >Nkayi</a
+                  >
                 </div>
               </li>
             </ul>
@@ -225,12 +255,18 @@
 </template>
 
 <script>
+import "vue-instant/dist/vue-instant.css";
+import VueInstant from "vue-instant/dist/vue-instant.common";
+
 export default {
   data() {
     return {
       q: "",
       location: "Votre ville",
     };
+  },
+  components: {
+    VueInstant,
   },
   computed: {
     // currentRouteName() {
@@ -243,7 +279,7 @@ export default {
     // },
 
     searchPage() {
-      this.$router.push({ name: "search" , props: 'q'});
+      this.$router.push({ name: "search", props: "q" });
     },
     categories() {
       return this.$store.state.categories;

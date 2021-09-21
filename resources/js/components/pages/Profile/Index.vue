@@ -39,6 +39,11 @@ import ProfileUser from "./Profile";
 
 export default {
   name: "ProfileIndex",
+  props: {
+    setNewTab: {
+      type: String,
+    },
+  },
   components: {
     ProfileAddress,
     ProfileOrders,
@@ -52,6 +57,12 @@ export default {
           activeTab: 'ProfileUser'
       }
   },
+  setup(props) {
+    if(props.tab){
+      this.activeTab = props.tab
+      console.log(props.tab)
+    }
+  }
 };
 </script>
 

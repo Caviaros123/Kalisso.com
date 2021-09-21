@@ -734,9 +734,13 @@ class UserController extends Controller
     public function register(Request $request)
     {
 
+        $request->merge([
+            'phone' => phoneNumber($request->phone),
+        ]);
+
         $request->validate([
-            'email' => 'string|unique:users,email',
-            'phone' => 'required|numeric|min:9|unique:users,phone',
+            'email' => 'email|unique:users,email',
+            'phone' => 'required|numeric|unique:users,phone',
             'password' => 'required|string|min:8|confirmed', // regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/'
             'isSeller' => 'boolean',
             'terms' => 'required|boolean:true',
@@ -757,25 +761,33 @@ class UserController extends Controller
         if ($request->status == 'registerWithPhone') {
 
             try {
-                $user = User::create([
-                    'name' => $request['name'],
-                    'avatar' => 'users/default.png',
-                    'lastname' => $request['lastname'],
-                    'phone' =>  phoneNumber($request->phone),
-                    'otp' =>   $otp,
-                    'isSeller' => $request->isSeller ? 1 : 0,
-                    'password' => Hash::make($request['password']),
-                    'created_at' => NOW(),
-                    'updated_at' => NOW(),
-                ]);
+                // $user = User::create([
+                //     'name' => $request['name'],
+                //     'avatar' => 'users/default.png',
+                //     'lastname' => $request['lastname'],
+                //     'phone' =>  phoneNumber($request->phone),
+                //     'otp' =>   $otp,
+                //     'isSeller' => $request->isSeller ? 1 : 0,
+                //     'password' => Hash::make($request['password']),
+                //     'created_at' => NOW(),
+                //     'updated_at' => NOW(),
+                // ]);
 
-                if ($user) {
-                    return $user;
-                }
+                $request->merge([
+                    'email_verified_at' => NOW(),
+                    'otp' => rand(100000, 999999)
+    
+                ]);
+    
+                $input = $request->all();
+                $input['password'] = bcrypt($input['password']);
+                $user = User::create($input);
+                $success['token'] = $user->createToken('appToken')->accessToken;
 
                 return response()->json([
                     'success' => true,
-                    'message' => 'Félicitation vous êtes inscrit sur la plus grande\n plateforme de vente en ligne au Congo-Brazzaville',
+                    'message' => 'Félicitations vous êtes inscrit sur la plus grande\n plateforme de vente en ligne au Congo-Brazzaville',
+                    'token' => $success,
                     'data' => $user
                 ]);
             } catch (ServerException $e) {
@@ -801,7 +813,7 @@ class UserController extends Controller
             ]);
         }
 
-        return response()->json($request->all(), 200);
+        // return response()->json($request->all(), 200);
     }
 
     // logout

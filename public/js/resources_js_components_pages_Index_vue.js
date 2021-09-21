@@ -496,135 +496,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      globalUrl: "https://kalisso.com/storage/"
+    };
+  },
   computed: {
     products: function products() {
       return this.$store.state.products;
+    },
+    categories: function categories() {
+      return this.$store.state.categories;
     }
   }
 });
@@ -651,8 +534,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 ;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
   _Index_vue_vue_type_template_id_0e66a22c___WEBPACK_IMPORTED_MODULE_0__.render,
   _Index_vue_vue_type_template_id_0e66a22c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
@@ -680,7 +563,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/pages/Index.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -723,27 +606,95 @@ var render = function() {
       _vm._v(" "),
       _c("home-header-and-carousel"),
       _vm._v(" "),
-      _vm._m(0),
+      _c("section", { staticClass: "padding-bottom" }, [
+        _c("div", { staticClass: "card card-deal" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "row no-gutters items-wrap" },
+            _vm._l(_vm.categories.slice(0, 5), function(category, index) {
+              return _c("div", { key: index, staticClass: "col-md col-6" }, [
+                _c(
+                  "figure",
+                  { staticClass: "card-product-grid card-sm" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "img-wrap",
+                        attrs: {
+                          to: {
+                            name: "category.index",
+                            params: { selected: category.slug }
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "d-flex justify-content-center text-center"
+                          },
+                          [
+                            _c("img", {
+                              class: "mx-auto h-50 w-50 pt-5 img-fluid d-block",
+                              attrs: { src: _vm.globalUrl + category.cat_img }
+                            })
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "text-wrap p-3" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "title",
+                            attrs: {
+                              to: {
+                                name: "category.index",
+                                params: { selected: category.slug }
+                              }
+                            }
+                          },
+                          [_vm._v(_vm._s(category.name))]
+                        ),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "badge badge-danger" }, [
+                          _vm._v(" -20% ")
+                        ])
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ])
+            }),
+            0
+          )
+        ])
+      ]),
       _vm._v(" "),
       _vm._m(1),
       _vm._v(" "),
       _vm._m(2),
       _vm._v(" "),
-      _vm._m(3),
-      _vm._v(" "),
       _c("section", { staticClass: "padding-bottom-sm" }, [
-        _vm._m(4),
+        _vm._m(3),
         _vm._v(" "),
         _c(
           "div",
           { staticClass: "row row-sm" },
-          _vm._l(_vm.products, function(product) {
+          _vm._l(_vm.products.slice(0, 18), function(product, index) {
             return _c(
               "div",
-              {
-                key: product.id,
-                staticClass: "col-xl-2 col-lg-3 col-md-4 col-6"
-              },
+              { key: index, staticClass: "col-xl-2 col-lg-3 col-md-4 col-6" },
               [
                 _c(
                   "div",
@@ -776,7 +727,7 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "price mt-1" }, [
-                        _vm._v(_vm._s(product.price) + " FCFA")
+                        _vm._v(_vm._s(_vm.presentPrice(product.price)))
                       ])
                     ])
                   ],
@@ -786,7 +737,9 @@ var render = function() {
             )
           }),
           0
-        )
+        ),
+        _vm._v(" "),
+        _vm._m(4)
       ]),
       _vm._v(" "),
       _vm._m(5),
@@ -805,136 +758,36 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "padding-bottom" }, [
-      _c("div", { staticClass: "card card-deal" }, [
-        _c("div", { staticClass: "col-heading content-body" }, [
-          _c("header", { staticClass: "section-heading" }, [
-            _c("h3", { staticClass: "section-title" }, [
-              _vm._v("Deals and offers")
-            ]),
-            _vm._v(" "),
-            _c("p", [_vm._v("Hygiene equipments")])
-          ]),
+    return _c("div", { staticClass: "col-heading content-body" }, [
+      _c("header", { staticClass: "section-heading" }, [
+        _c("h3", { staticClass: "section-title" }, [_vm._v("Ventes Flash")]),
+        _vm._v(" "),
+        _c("p", [_vm._v("Se termine dans")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "timer" }, [
+        _c("div", [
+          _c("span", { staticClass: "num" }, [_vm._v("04")]),
           _vm._v(" "),
-          _c("div", { staticClass: "timer" }, [
-            _c("div", [
-              _c("span", { staticClass: "num" }, [_vm._v("04")]),
-              _vm._v(" "),
-              _c("small", [_vm._v("Jours")])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("span", { staticClass: "num" }, [_vm._v("12")]),
-              _vm._v(" "),
-              _c("small", [_vm._v("Heures")])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("span", { staticClass: "num" }, [_vm._v("58")]),
-              _vm._v(" "),
-              _c("small", [_vm._v("Min")])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("span", { staticClass: "num" }, [_vm._v("02")]),
-              _vm._v(" "),
-              _c("small", [_vm._v("Sec")])
-            ])
-          ])
+          _c("small", [_vm._v("Jours")])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "row no-gutters items-wrap" }, [
-          _c("div", { staticClass: "col-md col-6" }, [
-            _c("figure", { staticClass: "card-product-grid card-sm" }, [
-              _c("a", { staticClass: "img-wrap", attrs: { href: "#" } }, [
-                _c("img", { attrs: { src: "images/items/3.jpg" } })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "text-wrap p-3" }, [
-                _c("a", { staticClass: "title", attrs: { href: "#" } }, [
-                  _vm._v("Summer clothes")
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "badge badge-danger" }, [
-                  _vm._v(" -20% ")
-                ])
-              ])
-            ])
-          ]),
+        _c("div", [
+          _c("span", { staticClass: "num" }, [_vm._v("12")]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md col-6" }, [
-            _c("figure", { staticClass: "card-product-grid card-sm" }, [
-              _c("a", { staticClass: "img-wrap", attrs: { href: "#" } }, [
-                _c("img", { attrs: { src: "images/items/4.jpg" } })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "text-wrap p-3" }, [
-                _c("a", { staticClass: "title", attrs: { href: "#" } }, [
-                  _vm._v("Some category")
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "badge badge-danger" }, [
-                  _vm._v(" -5% ")
-                ])
-              ])
-            ])
-          ]),
+          _c("small", [_vm._v("Heures")])
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c("span", { staticClass: "num" }, [_vm._v("58")]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md col-6" }, [
-            _c("figure", { staticClass: "card-product-grid card-sm" }, [
-              _c("a", { staticClass: "img-wrap", attrs: { href: "#" } }, [
-                _c("img", { attrs: { src: "images/items/5.jpg" } })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "text-wrap p-3" }, [
-                _c("a", { staticClass: "title", attrs: { href: "#" } }, [
-                  _vm._v("Another category")
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "badge badge-danger" }, [
-                  _vm._v(" -20% ")
-                ])
-              ])
-            ])
-          ]),
+          _c("small", [_vm._v("Min")])
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c("span", { staticClass: "num" }, [_vm._v("02")]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md col-6" }, [
-            _c("figure", { staticClass: "card-product-grid card-sm" }, [
-              _c("a", { staticClass: "img-wrap", attrs: { href: "#" } }, [
-                _c("img", { attrs: { src: "images/items/6.jpg" } })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "text-wrap p-3" }, [
-                _c("a", { staticClass: "title", attrs: { href: "#" } }, [
-                  _vm._v("Home apparel")
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "badge badge-danger" }, [
-                  _vm._v(" -15% ")
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md col-6" }, [
-            _c("figure", { staticClass: "card-product-grid card-sm" }, [
-              _c("a", { staticClass: "img-wrap", attrs: { href: "#" } }, [
-                _c("img", { attrs: { src: "images/items/7.jpg" } })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "text-wrap p-3" }, [
-                _c(
-                  "a",
-                  { staticClass: "title text-truncate", attrs: { href: "#" } },
-                  [_vm._v("Smart watches")]
-                ),
-                _vm._v(" "),
-                _c("span", { staticClass: "badge badge-danger" }, [
-                  _vm._v(" -10% ")
-                ])
-              ])
-            ])
-          ])
+          _c("small", [_vm._v("Sec")])
         ])
       ])
     ])
@@ -960,7 +813,7 @@ var staticRenderFns = [
               _vm._v(" "),
               _c("p", [
                 _vm._v(
-                  "\n              Consectetur adipisicing elit, sed do eiusmod tempor incididunt\n              ut labore et dolore magna aliqua.\n            "
+                  "\n                Consectetur adipisicing elit, sed do eiusmod tempor incididunt\n                ut labore et dolore magna aliqua.\n              "
                 )
               ]),
               _vm._v(" "),
@@ -987,7 +840,7 @@ var staticRenderFns = [
                   _c("div", { staticClass: "card-body" }, [
                     _c("h6", { staticClass: "title" }, [
                       _vm._v(
-                        "\n                    Well made women clothes with trending collection\n                  "
+                        "\n                      Well made women clothes with trending collection\n                    "
                       )
                     ]),
                     _vm._v(" "),
@@ -998,7 +851,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("p", { staticClass: "text-muted" }, [
                       _c("i", { staticClass: "fa fa-map-marker-alt" }),
-                      _vm._v(" Guanjou, China\n                  ")
+                      _vm._v(" Guanjou, China\n                    ")
                     ])
                   ])
                 ])
@@ -1009,7 +862,7 @@ var staticRenderFns = [
                   _c("div", { staticClass: "card-body" }, [
                     _c("h6", { staticClass: "title" }, [
                       _vm._v(
-                        "\n                    Great clothes with trending collection\n                  "
+                        "\n                      Great clothes with trending collection\n                    "
                       )
                     ]),
                     _vm._v(" "),
@@ -1020,7 +873,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("p", { staticClass: "text-muted" }, [
                       _c("i", { staticClass: "fa fa-map-marker-alt" }),
-                      _vm._v(" Beijing, China\n                  ")
+                      _vm._v(" Beijing, China\n                    ")
                     ])
                   ])
                 ])
@@ -1040,7 +893,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("p", { staticClass: "text-muted" }, [
                       _c("i", { staticClass: "fa fa-map-marker-alt" }),
-                      _vm._v(" Tokyo, Japan\n                  ")
+                      _vm._v(" Tokyo, Japan\n                    ")
                     ])
                   ])
                 ])
@@ -1051,7 +904,7 @@ var staticRenderFns = [
                   _c("div", { staticClass: "card-body" }, [
                     _c("h6", { staticClass: "title" }, [
                       _vm._v(
-                        "\n                    Home and kitchen electronic stuff collection\n                  "
+                        "\n                      Home and kitchen electronic stuff collection\n                    "
                       )
                     ]),
                     _vm._v(" "),
@@ -1062,7 +915,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("p", { staticClass: "text-muted" }, [
                       _c("i", { staticClass: "fa fa-map-marker-alt" }),
-                      _vm._v(" Tashkent, Uzb\n                  ")
+                      _vm._v(" Tashkent, Uzb\n                    ")
                     ])
                   ])
                 ])
@@ -1073,7 +926,7 @@ var staticRenderFns = [
                   _c("div", { staticClass: "card-body" }, [
                     _c("h6", { staticClass: "title" }, [
                       _vm._v(
-                        "\n                    Home and kitchen electronic stuff collection\n                  "
+                        "\n                      Home and kitchen electronic stuff collection\n                    "
                       )
                     ]),
                     _vm._v(" "),
@@ -1084,7 +937,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("p", { staticClass: "text-muted" }, [
                       _c("i", { staticClass: "fa fa-map-marker-alt" }),
-                      _vm._v(" London, Britain\n                  ")
+                      _vm._v(" London, Britain\n                    ")
                     ])
                   ])
                 ])
@@ -1095,7 +948,7 @@ var staticRenderFns = [
                   _c("div", { staticClass: "card-body" }, [
                     _c("h6", { staticClass: "title" }, [
                       _vm._v(
-                        "\n                    Home and kitchen electronic stuff collection\n                  "
+                        "\n                      Home and kitchen electronic stuff collection\n                    "
                       )
                     ]),
                     _vm._v(" "),
@@ -1106,7 +959,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("p", { staticClass: "text-muted" }, [
                       _c("i", { staticClass: "fa fa-map-marker-alt" }),
-                      _vm._v(" Guanjou, China\n                  ")
+                      _vm._v(" Guanjou, China\n                    ")
                     ])
                   ])
                 ])
@@ -1117,7 +970,7 @@ var staticRenderFns = [
                   _c("div", { staticClass: "card-body" }, [
                     _c("h6", { staticClass: "title" }, [
                       _vm._v(
-                        "\n                    Well made clothes with trending collection\n                  "
+                        "\n                      Well made clothes with trending collection\n                    "
                       )
                     ]),
                     _vm._v(" "),
@@ -1128,7 +981,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("p", { staticClass: "text-muted" }, [
                       _c("i", { staticClass: "fa fa-map-marker-alt" }),
-                      _vm._v(" Hong Kong, China\n                  ")
+                      _vm._v(" Hong Kong, China\n                    ")
                     ])
                   ])
                 ])
@@ -1139,7 +992,7 @@ var staticRenderFns = [
                   _c("div", { staticClass: "card-body" }, [
                     _c("h6", { staticClass: "title" }, [
                       _vm._v(
-                        "\n                    Home and kitchen interior stuff collection\n                  "
+                        "\n                      Home and kitchen interior stuff collection\n                    "
                       )
                     ]),
                     _vm._v(" "),
@@ -1150,7 +1003,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("p", { staticClass: "text-muted" }, [
                       _c("i", { staticClass: "fa fa-map-marker-alt" }),
-                      _vm._v(" Guanjou, China\n                  ")
+                      _vm._v(" Guanjou, China\n                    ")
                     ])
                   ])
                 ])
@@ -1182,7 +1035,7 @@ var staticRenderFns = [
               _vm._v(" "),
               _c("p", [
                 _vm._v(
-                  "\n              Consectetur adipisicing elit, sed do eiusmod tempor incididunt\n              ut labore et dolore magna aliqua.\n            "
+                  "\n                Consectetur adipisicing elit, sed do eiusmod tempor incididunt\n                ut labore et dolore magna aliqua.\n              "
                 )
               ]),
               _vm._v(" "),
@@ -1218,7 +1071,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("p", { staticClass: "text-muted" }, [
                       _c("i", { staticClass: "fa fa-map-marker-alt" }),
-                      _vm._v(" Tokyo, Japan\n                  ")
+                      _vm._v(" Tokyo, Japan\n                    ")
                     ])
                   ])
                 ])
@@ -1229,7 +1082,7 @@ var staticRenderFns = [
                   _c("div", { staticClass: "card-body" }, [
                     _c("h6", { staticClass: "title" }, [
                       _vm._v(
-                        "\n                    Another demo text for item stuff goes here\n                  "
+                        "\n                      Another demo text for item stuff goes here\n                    "
                       )
                     ]),
                     _vm._v(" "),
@@ -1240,7 +1093,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("p", { staticClass: "text-muted" }, [
                       _c("i", { staticClass: "fa fa-map-marker-alt" }),
-                      _vm._v(" Hong Kong, China\n                  ")
+                      _vm._v(" Hong Kong, China\n                    ")
                     ])
                   ])
                 ])
@@ -1251,7 +1104,7 @@ var staticRenderFns = [
                   _c("div", { staticClass: "card-body" }, [
                     _c("h6", { staticClass: "title" }, [
                       _vm._v(
-                        "\n                    Home and kitchen electronic stuff collection\n                  "
+                        "\n                      Home and kitchen electronic stuff collection\n                    "
                       )
                     ]),
                     _vm._v(" "),
@@ -1262,7 +1115,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("p", { staticClass: "text-muted" }, [
                       _c("i", { staticClass: "fa fa-map-marker-alt" }),
-                      _vm._v(" Tashkent, Uzb\n                  ")
+                      _vm._v(" Tashkent, Uzb\n                    ")
                     ])
                   ])
                 ])
@@ -1282,7 +1135,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("p", { staticClass: "text-muted" }, [
                       _c("i", { staticClass: "fa fa-map-marker-alt" }),
-                      _vm._v(" Guanjou, China\n                  ")
+                      _vm._v(" Guanjou, China\n                    ")
                     ])
                   ])
                 ])
@@ -1293,7 +1146,7 @@ var staticRenderFns = [
                   _c("div", { staticClass: "card-body" }, [
                     _c("h6", { staticClass: "title" }, [
                       _vm._v(
-                        "\n                    Home and kitchen electronic stuff collection\n                  "
+                        "\n                      Home and kitchen electronic stuff collection\n                    "
                       )
                     ]),
                     _vm._v(" "),
@@ -1304,7 +1157,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("p", { staticClass: "text-muted" }, [
                       _c("i", { staticClass: "fa fa-map-marker-alt" }),
-                      _vm._v(" Guanjou, China\n                  ")
+                      _vm._v(" Guanjou, China\n                    ")
                     ])
                   ])
                 ])
@@ -1315,7 +1168,7 @@ var staticRenderFns = [
                   _c("div", { staticClass: "card-body" }, [
                     _c("h6", { staticClass: "title" }, [
                       _vm._v(
-                        "\n                    Home and kitchen electronic stuff collection\n                  "
+                        "\n                      Home and kitchen electronic stuff collection\n                    "
                       )
                     ]),
                     _vm._v(" "),
@@ -1326,7 +1179,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("p", { staticClass: "text-muted" }, [
                       _c("i", { staticClass: "fa fa-map-marker-alt" }),
-                      _vm._v(" Guanjou, China\n                  ")
+                      _vm._v(" Guanjou, China\n                    ")
                     ])
                   ])
                 ])
@@ -1337,7 +1190,7 @@ var staticRenderFns = [
                   _c("div", { staticClass: "card-body" }, [
                     _c("h6", { staticClass: "title" }, [
                       _vm._v(
-                        "\n                    Home and kitchen electronic stuff collection\n                  "
+                        "\n                      Home and kitchen electronic stuff collection\n                    "
                       )
                     ]),
                     _vm._v(" "),
@@ -1348,7 +1201,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("p", { staticClass: "text-muted" }, [
                       _c("i", { staticClass: "fa fa-map-marker-alt" }),
-                      _vm._v(" Guanjou, China\n                  ")
+                      _vm._v(" Guanjou, China\n                    ")
                     ])
                   ])
                 ])
@@ -1359,7 +1212,7 @@ var staticRenderFns = [
                   _c("div", { staticClass: "card-body" }, [
                     _c("h6", { staticClass: "title" }, [
                       _vm._v(
-                        "\n                    Home and kitchen electronic stuff collection\n                  "
+                        "\n                      Home and kitchen electronic stuff collection\n                    "
                       )
                     ]),
                     _vm._v(" "),
@@ -1370,138 +1223,9 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("p", { staticClass: "text-muted" }, [
                       _c("i", { staticClass: "fa fa-map-marker-alt" }),
-                      _vm._v(" Guanjou, China\n                  ")
+                      _vm._v(" Guanjou, China\n                    ")
                     ])
                   ])
-                ])
-              ])
-            ])
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "padding-bottom" }, [
-      _c("header", { staticClass: "section-heading heading-line" }, [
-        _c("h4", { staticClass: "title-section text-uppercase" }, [
-          _vm._v("Request for Quotation")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c(
-            "div",
-            {
-              staticClass: "card-banner banner-quote overlay-gradient",
-              staticStyle: {
-                "background-image": "url('images/banners/banner9.jpg')"
-              }
-            },
-            [
-              _c("div", { staticClass: "card-img-overlay white" }, [
-                _c("h3", { staticClass: "card-title" }, [
-                  _vm._v(
-                    "\n              An easy way to send request to suppliers\n            "
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  {
-                    staticClass: "card-text",
-                    staticStyle: { "max-width": "400px" }
-                  },
-                  [
-                    _vm._v(
-                      "\n              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do\n              eiusmod tempor incididunt.\n            "
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "btn btn-primary rounded-pill",
-                    attrs: { href: "" }
-                  },
-                  [_vm._v("Learn more")]
-                )
-              ])
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-4" }, [
-          _c("div", { staticClass: "card card-body" }, [
-            _c("h4", { staticClass: "title py-3" }, [
-              _vm._v("One Request, Multiple Quotes")
-            ]),
-            _vm._v(" "),
-            _c("form", [
-              _c("div", { staticClass: "form-group" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: {
-                    name: "",
-                    placeholder: "What are you looking for?",
-                    type: "text"
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("div", { staticClass: "input-group" }, [
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { placeholder: "Quantity", name: "", type: "text" }
-                  }),
-                  _vm._v(" "),
-                  _c("select", { staticClass: "custom-select form-control" }, [
-                    _c("option", [_vm._v("Pieces")]),
-                    _vm._v(" "),
-                    _c("option", [_vm._v("Litres")]),
-                    _vm._v(" "),
-                    _c("option", [_vm._v("Tons")]),
-                    _vm._v(" "),
-                    _c("option", [_vm._v("Gramms")])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group text-muted" }, [
-                _c("p", [_vm._v("Select template type:")]),
-                _vm._v(" "),
-                _c("label", { staticClass: "form-check form-check-inline" }, [
-                  _c("input", {
-                    staticClass: "form-check-input",
-                    attrs: { type: "checkbox", value: "option1" }
-                  }),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "form-check-label" }, [
-                    _vm._v("Request price")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("label", { staticClass: "form-check form-check-inline" }, [
-                  _c("input", {
-                    staticClass: "form-check-input",
-                    attrs: { type: "checkbox", value: "option2" }
-                  }),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "form-check-label" }, [
-                    _vm._v("Request a sample")
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("button", { staticClass: "btn btn-warning" }, [
-                  _vm._v("Request for quote")
                 ])
               ])
             ])
@@ -1516,7 +1240,17 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("header", { staticClass: "section-heading heading-line" }, [
       _c("h4", { staticClass: "title-section text-uppercase" }, [
-        _vm._v("Recommended items")
+        _vm._v("Produits Recommendés")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { attrs: { align: "center" } }, [
+      _c("a", { staticClass: "btn btn-danger", attrs: { href: "#" } }, [
+        _vm._v("\n            Voir plus\n          ")
       ])
     ])
   },
@@ -1527,7 +1261,7 @@ var staticRenderFns = [
     return _c("section", { staticClass: "padding-bottom" }, [
       _c("header", { staticClass: "section-heading heading-line" }, [
         _c("h4", { staticClass: "title-section text-uppercase" }, [
-          _vm._v("Trade services")
+          _vm._v("SERVICES COMMERCIAUX\n")
         ])
       ]),
       _vm._v(" "),
@@ -1540,10 +1274,12 @@ var staticRenderFns = [
             }),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
-              _c("h6", { staticClass: "title" }, [_vm._v("Trade Assurance")]),
+              _c("h6", { staticClass: "title" }, [
+                _vm._v("Assurance commerciale")
+              ]),
               _vm._v(" "),
               _c("p", { staticClass: "small text-uppercase text-muted" }, [
-                _vm._v("Order protection")
+                _vm._v("Protection de vos commandes")
               ])
             ])
           ])
@@ -1557,10 +1293,12 @@ var staticRenderFns = [
             }),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
-              _c("h6", { staticClass: "title" }, [_vm._v("Pay anytime")]),
+              _c("h6", { staticClass: "title" }, [
+                _vm._v("Paiements Securisés")
+              ]),
               _vm._v(" "),
               _c("p", { staticClass: "small text-uppercase text-muted" }, [
-                _vm._v("Finance solution")
+                _vm._v("Solution K-Pay")
               ])
             ])
           ])
@@ -1575,11 +1313,11 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
               _c("h6", { staticClass: "title" }, [
-                _vm._v("Inspection solution")
+                _vm._v("Service après ventes")
               ]),
               _vm._v(" "),
               _c("p", { staticClass: "small text-uppercase text-muted" }, [
-                _vm._v("Easy Inspection")
+                _vm._v("Garantie")
               ])
             ])
           ])
@@ -1594,11 +1332,11 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
               _c("h6", { staticClass: "title" }, [
-                _vm._v("Ocean and Air Shipping")
+                _vm._v("Transport maritime et aérien")
               ]),
               _vm._v(" "),
               _c("p", { staticClass: "small text-uppercase text-muted" }, [
-                _vm._v("Logistic services")
+                _vm._v("Services logistique")
               ])
             ])
           ])

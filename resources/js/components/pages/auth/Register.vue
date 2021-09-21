@@ -326,7 +326,7 @@ export default {
     singUp() {
       this.$store
         .dispatch("register", {
-          phone: this.formData.phone,
+          phone: this.formData.phone.split(" ").join(""),
           password: this.formData.password.password,
           password_confirmation: this.formData.password.confirm,
           isSeller: this.formData.beingSeller,

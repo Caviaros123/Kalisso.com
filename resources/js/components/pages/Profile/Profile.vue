@@ -12,7 +12,7 @@
 						<div class="text">
 							<strong> {{ user.name }} </strong> <br> 
 							<p class="mb-2"> {{ user.email }}  </p> 
-							<button @click="activeTab = 'ProfileSettings'" class="btn btn-light btn-sm">Editer</button>
+							<router-link href="#" :to="{ name: 'profile.index', params: { tab: 'ProfileSettings' }}" class="btn btn-light btn-sm">Modifier</router-link>
 						</div>
 				</figure>
 				<hr>

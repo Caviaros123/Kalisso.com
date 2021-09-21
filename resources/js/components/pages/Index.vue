@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <nav-section ></nav-section>
+    <nav-section></nav-section>
 
     <home-header-and-carousel></home-header-and-carousel>
     <!-- =============== SECTION DEAL =============== -->
@@ -8,8 +8,8 @@
       <div class="card card-deal">
         <div class="col-heading content-body">
           <header class="section-heading">
-            <h3 class="section-title">Deals and offers</h3>
-            <p>Hygiene equipments</p>
+            <h3 class="section-title">Ventes Flash</h3>
+            <p>Se termine dans</p>
           </header>
           <!-- sect-heading -->
           <div class="timer">
@@ -21,66 +21,23 @@
         </div>
         <!-- col.// -->
         <div class="row no-gutters items-wrap">
-          <div class="col-md col-6">
+          <div
+            class="col-md col-6"
+            v-for="(category, index) in categories.slice(0, 5)"
+            :key="index"
+          >
             <figure class="card-product-grid card-sm">
-              <a href="#" class="img-wrap">
-                <img src="images/items/3.jpg" />
-              </a>
+              <router-link :to="{name : 'category.index', params: {selected: category.slug}}" class="img-wrap">
+                <div class="d-flex justify-content-center text-center">
+                  <img :src="globalUrl+category.cat_img" :class="'mx-auto h-50 w-50 pt-5 img-fluid d-block'" />
+                </div>
+              </router-link>
               <div class="text-wrap p-3">
-                <a href="#" class="title">Summer clothes</a>
+                <router-link :to="{name : 'category.index', params: {selected: category.slug}}" class="title">{{ category.name }}</router-link>
                 <span class="badge badge-danger"> -20% </span>
               </div>
             </figure>
           </div>
-          <!-- col.// -->
-          <div class="col-md col-6">
-            <figure class="card-product-grid card-sm">
-              <a href="#" class="img-wrap">
-                <img src="images/items/4.jpg" />
-              </a>
-              <div class="text-wrap p-3">
-                <a href="#" class="title">Some category</a>
-                <span class="badge badge-danger"> -5% </span>
-              </div>
-            </figure>
-          </div>
-          <!-- col.// -->
-          <div class="col-md col-6">
-            <figure class="card-product-grid card-sm">
-              <a href="#" class="img-wrap">
-                <img src="images/items/5.jpg" />
-              </a>
-              <div class="text-wrap p-3">
-                <a href="#" class="title">Another category</a>
-                <span class="badge badge-danger"> -20% </span>
-              </div>
-            </figure>
-          </div>
-          <!-- col.// -->
-          <div class="col-md col-6">
-            <figure class="card-product-grid card-sm">
-              <a href="#" class="img-wrap">
-                <img src="images/items/6.jpg" />
-              </a>
-              <div class="text-wrap p-3">
-                <a href="#" class="title">Home apparel</a>
-                <span class="badge badge-danger"> -15% </span>
-              </div>
-            </figure>
-          </div>
-          <!-- col.// -->
-          <div class="col-md col-6">
-            <figure class="card-product-grid card-sm">
-              <a href="#" class="img-wrap">
-                <img src="images/items/7.jpg" />
-              </a>
-              <div class="text-wrap p-3">
-                <a href="#" class="title text-truncate">Smart watches</a>
-                <span class="badge badge-danger"> -10% </span>
-              </div>
-            </figure>
-          </div>
-          <!-- col.// -->
         </div>
       </div>
     </section>
@@ -356,104 +313,17 @@
     </section>
     <!-- =============== SECTION 2 END =============== -->
 
-    <!-- =============== SECTION REQUEST =============== -->
-
-    <section class="padding-bottom">
-      <header class="section-heading heading-line">
-        <h4 class="title-section text-uppercase">Request for Quotation</h4>
-      </header>
-
-      <div class="row">
-        <div class="col-md-8">
-          <div
-            class="card-banner banner-quote overlay-gradient"
-            style="background-image: url('images/banners/banner9.jpg')"
-          >
-            <div class="card-img-overlay white">
-              <h3 class="card-title">
-                An easy way to send request to suppliers
-              </h3>
-              <p class="card-text" style="max-width: 400px">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt.
-              </p>
-              <a href="" class="btn btn-primary rounded-pill">Learn more</a>
-            </div>
-          </div>
-        </div>
-        <!-- col // -->
-        <div class="col-md-4">
-          <div class="card card-body">
-            <h4 class="title py-3">One Request, Multiple Quotes</h4>
-            <form>
-              <div class="form-group">
-                <input
-                  class="form-control"
-                  name=""
-                  placeholder="What are you looking for?"
-                  type="text"
-                />
-              </div>
-              <div class="form-group">
-                <div class="input-group">
-                  <input
-                    class="form-control"
-                    placeholder="Quantity"
-                    name=""
-                    type="text"
-                  />
-
-                  <select class="custom-select form-control">
-                    <option>Pieces</option>
-                    <option>Litres</option>
-                    <option>Tons</option>
-                    <option>Gramms</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group text-muted">
-                <p>Select template type:</p>
-                <label class="form-check form-check-inline">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="option1"
-                  />
-                  <span class="form-check-label">Request price</span>
-                </label>
-                <label class="form-check form-check-inline">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="option2"
-                  />
-                  <span class="form-check-label">Request a sample</span>
-                </label>
-              </div>
-              <div class="form-group">
-                <button class="btn btn-warning">Request for quote</button>
-              </div>
-            </form>
-          </div>
-        </div>
-        <!-- col // -->
-      </div>
-      <!-- row // -->
-    </section>
-
-    <!-- =============== SECTION REQUEST .//END =============== -->
-
     <!-- =============== SECTION ITEMS =============== -->
     <section class="padding-bottom-sm">
       <header class="section-heading heading-line">
-        <h4 class="title-section text-uppercase">Recommended items</h4>
+        <h4 class="title-section text-uppercase">Produits Recommendés</h4>
       </header>
 
       <div class="row row-sm">
         <div
           class="col-xl-2 col-lg-3 col-md-4 col-6"
-          v-for="product in products"
-          :key="product.id"
+          v-for="(product, index) in products.slice(0, 18)"
+          :key="index"
         >
           <div class="card card-sm card-product-grid">
             <router-link
@@ -467,13 +337,19 @@
             </router-link>
             <figcaption class="info-wrap">
               <a href="#" class="title">{{ product.name }}</a>
-              <div class="price mt-1">{{ product.price }} FCFA</div>
+              <div class="price mt-1">{{ presentPrice(product.price) }}</div>
               <!-- price-wrap.// -->
             </figcaption>
           </div>
         </div>
+       
         <!-- col.// -->
       </div>
+       <div align="center">
+          <a href="#" class="btn btn-danger">
+            Voir plus
+          </a>
+       </div>
       <!-- row.// -->
     </section>
     <!-- =============== SECTION ITEMS .//END =============== -->
@@ -481,7 +357,8 @@
     <!-- =============== SECTION SERVICES =============== -->
     <section class="padding-bottom">
       <header class="section-heading heading-line">
-        <h4 class="title-section text-uppercase">Trade services</h4>
+        <h4 class="title-section text-uppercase">SERVICES COMMERCIAUX
+</h4>
       </header>
 
       <div class="row">
@@ -489,8 +366,8 @@
           <article class="card card-post">
             <img src="images/posts/1.jpg" class="card-img-top" />
             <div class="card-body">
-              <h6 class="title">Trade Assurance</h6>
-              <p class="small text-uppercase text-muted">Order protection</p>
+              <h6 class="title">Assurance commerciale</h6>
+              <p class="small text-uppercase text-muted">Protection de vos commandes</p>
             </div>
           </article>
           <!-- card.// -->
@@ -500,8 +377,8 @@
           <article class="card card-post">
             <img src="images/posts/2.jpg" class="card-img-top" />
             <div class="card-body">
-              <h6 class="title">Pay anytime</h6>
-              <p class="small text-uppercase text-muted">Finance solution</p>
+              <h6 class="title">Paiements Securisés</h6>
+              <p class="small text-uppercase text-muted">Solution K-Pay</p>
             </div>
           </article>
           <!-- card.// -->
@@ -511,8 +388,8 @@
           <article class="card card-post">
             <img src="images/posts/3.jpg" class="card-img-top" />
             <div class="card-body">
-              <h6 class="title">Inspection solution</h6>
-              <p class="small text-uppercase text-muted">Easy Inspection</p>
+              <h6 class="title">Service après ventes</h6>
+              <p class="small text-uppercase text-muted">Garantie</p>
             </div>
           </article>
           <!-- card.// -->
@@ -522,8 +399,8 @@
           <article class="card card-post">
             <img src="images/posts/4.jpg" class="card-img-top" />
             <div class="card-body">
-              <h6 class="title">Ocean and Air Shipping</h6>
-              <p class="small text-uppercase text-muted">Logistic services</p>
+              <h6 class="title">Transport maritime et aérien</h6>
+              <p class="small text-uppercase text-muted">Services logistique</p>
             </div>
           </article>
           <!-- card.// -->
@@ -602,18 +479,23 @@
       <img src="/images/banners/ad-sm.png" class="w-100" />
     </article>
 
-    <footer-section ></footer-section>
-
+    <footer-section></footer-section>
   </div>
-  
 </template>
 
 <script>
-
 export default {
+  data() {
+    return {
+      globalUrl: "https://kalisso.com/storage/",
+    };
+  },
   computed: {
     products() {
       return this.$store.state.products;
+    },
+    categories() {
+      return this.$store.state.categories;
     },
   },
 };
