@@ -1,10 +1,15 @@
 <?php
 
-
+use App\Events\ProductLiked;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use \App\Panier;
+use App\Product;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Broadcast;
+use TCG\Voyager\Facades\Voyager;
 
 
 /*
@@ -21,11 +26,26 @@ use Laravel\Socialite\Facades\Socialite;
 
 Route::any('/{any}', function () {
     return view('layouts.app');
-})->where('any', '^(?!api).*$')->where('any', '^(?!admin).*$');
+})->where('any', '^(?!api).*$')
+->where('any', '^(?!admin).*$')
+->where('any', '^(?!broadcasting).*$')
+->where('any', '^(?!laravel-websockets).*$')
+->where('any', '^(?!laravel-websockets/event/).*$')
+->where('any', '^(?!notify).*$');
 
 // voyager route
 Route::group(['prefix' => 'admin'], function () {
 	Voyager::routes();
+});
+
+Route::group(['prefix' => 'broadcasting'], function () {
+    Broadcast::routes();
+});
+
+Route::get('/notify', function (){
+    $product= Product::first();
+    $user= Auth::user();
+    broadcast(new ProductLiked());
 });
 
 // Route::get('auth/google', 'Auth\GoogleController@redirectToGoogle');

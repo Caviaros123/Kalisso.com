@@ -71,14 +71,18 @@
                     </ul>
                 </aside>
                 <aside class="col-sm-2 col-md-2">
-                    <h6 class="title">Our app</h6>
-                    <a href="#" class="d-block mb-2"
-                        ><img src="/images/misc/appstore.png" height="40"
-                    /></a>
-                    <a href="#" class="d-block mb-2"
-                        ><img src="/images/misc/playmarket.png" height="40"
-                    /></a>
+                    <h6 class="title ">Téléchargez nos applications gratuites :</h6>
+                    
+                        <a href="#" class="d-block mb-2 "
+                            ><img src="/images/misc/appstore.png" height="40"
+                        /></a>
+                        <a href="#" class="d-block mb-2 "
+                            ><img src="/images/misc/playmarket.png" height="40"
+                        /></a>
+                  
+                    
                 </aside>
+
             </div>
             <!-- row.// -->
         </section>
@@ -86,11 +90,11 @@
 
         <section class="footer-copyright border-top">
             <p class="float-left text-muted">
-                &copy; 2019 Company All rights resetved
+                &copy; 2020 Kalisso LLC Tous les droits sont réservés
             </p>
             <p target="_blank" class="float-right text-muted">
                 <a href="#">Privacy & Cookies</a> &nbsp; &nbsp;
-                <a href="#">Accessibility</a>
+                <a href="#">Accessibilité</a>
             </p>
         </section>
     </div>

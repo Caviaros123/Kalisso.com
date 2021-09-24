@@ -180,7 +180,6 @@ __webpack_require__.r(__webpack_exports__);
       type: String
     }
   },
-  components: {},
   data: function data() {
     return {
       phone: this.phoneNumber || "+242064272080",
@@ -200,25 +199,20 @@ __webpack_require__.r(__webpack_exports__);
       coderesult: null
     };
   },
-  setup: function setup() {
-    this.sendOtp();
-  },
   mounted: function mounted() {
-    firebase_app__WEBPACK_IMPORTED_MODULE_0__.default.auth().useDeviceLanguage(); // this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier({
-    //   size: "invisible",
-    //   callback: (response) => {
-    //     // reCAPTCHA solved, allow signInWithPhoneNumber.
-    //     console.log(response);
-    //   },
-    // });
-
+    firebase_app__WEBPACK_IMPORTED_MODULE_0__.default.auth().useDeviceLanguage();
     this.recaptchaVerifier = new firebase_app__WEBPACK_IMPORTED_MODULE_0__.default.auth.RecaptchaVerifier("recaptcha-container", {
       size: "invisible",
-      callback: function callback(response) {// reCAPTCHA solved, allow signInWithPhoneNumber.
+      callback: function callback(response) {
+        // reCAPTCHA solved, allow signInWithPhoneNumber.
         // ...
+        alert("Success recaptcha");
+        this.sendOtp();
       },
-      "expired-callback": function expiredCallback() {// Response expired. Ask user to solve reCAPTCHA again.
+      "expired-callback": function expiredCallback() {
+        // Response expired. Ask user to solve reCAPTCHA again.
         // ...
+        alert("Echec recaptcha");
       }
     }); //
 

@@ -313,9 +313,6 @@ export default {
         this.$refs.observer.reset();
       });
     },
-    onSubmit() {
-      alert("Form submitted!");
-    },
     validateBeforeSubmit() {
       this.$validator.validateAll().then((result) => {
         if (result) {
@@ -331,7 +328,7 @@ export default {
           password_confirmation: this.formData.password.confirm,
           isSeller: this.formData.beingSeller,
           terms: this.formData.terms,
-          referral: this.formData.referral,
+          referral: this.formData.referral.split(" ").join(""),
           status: "registerWithPhone",
         })
         .then((response) => {

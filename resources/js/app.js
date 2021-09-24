@@ -26,6 +26,13 @@ import OtpInput from "@bachdgvn/vue-otp-input";
 import CountdownTimer from "vuejs-countdown-timer";
 import firebase from "firebase";
 import 'firebase/auth'
+import ProductZoomer from 'vue-product-zoomer'
+import VueAddtohomescreen from "@owliehq/vue-addtohomescreen";
+import 'vue-cookie-accept-decline/dist/vue-cookie-accept-decline.css';
+import VueCookieAcceptDecline from 'vue-cookie-accept-decline';
+import Echo from "laravel-echo";
+
+window.eventBus = new Vue();
 
 // Install VeeValidate rules and localization
 Object.keys(rules).forEach(rule => {
@@ -34,6 +41,9 @@ Object.keys(rules).forEach(rule => {
 
 localize("fr", fr);
 
+
+Vue.use(VueAddtohomescreen);
+Vue.use(ProductZoomer);
 Vue.use(CountdownTimer);
 Vue.use(BootstrapVue);
 Vue.use(VueTelInput);
@@ -57,7 +67,7 @@ firebase.initializeApp(firebaseConfig);
 
 const router = new VueRouter({
     mode: "history",
-    base:process.env.BASE_URL,
+    base:process.env.APP_URL,
     routes
 });
 
@@ -83,6 +93,7 @@ router.beforeEach((to, from, next) => {
     }
 });
 
+Vue.component('vue-cookie-accept-decline', VueCookieAcceptDecline);
 Vue.component("ValidationObserver", ValidationObserver);
 Vue.component("ValidationProvider", ValidationProvider);
 
@@ -137,5 +148,6 @@ const app = new Vue({
                 .then(() => {})
                 .catch(error => console.error(error));
         }
+        
     }
 });

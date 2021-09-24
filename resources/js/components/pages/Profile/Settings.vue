@@ -1,6 +1,5 @@
 <template>
   <!-- ========================= SECTION CONTENT ========================= -->
-
   <main class="col-md-9" >
     <div class="card">
       <div class="card-body">

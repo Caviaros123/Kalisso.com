@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use App\Likable;
 
 class Profile extends Model 
 {
+     use Likable, Notifiable;
 
 	protected $table = 'profiles';
      /**

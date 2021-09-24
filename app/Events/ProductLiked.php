@@ -12,7 +12,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class ProductLiked
+class ProductLiked 
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -29,6 +29,14 @@ class ProductLiked
         $this->user = $user;
     }
 
+
+    public function broadcastWith()
+    {
+        return [
+            'hello' => 'Cher prince'
+        ];
+    }
+
     /**
      * Get the channels the event should broadcast on.
      *
@@ -37,6 +45,6 @@ class ProductLiked
     public function broadcastOn()
     {
         // return new PrivateChannel('channel-name');
-        return new Channel('product-events');
+        return new Channel('channel');
     }
 }

@@ -52,14 +52,22 @@ export default {
     ProfileWishlist,
     ProfileUser,
   },
+  created(){
+    eventBus.$on('setNewTab', (data)=> this.activeTab = data)
+  },
   data() {
       return {
-          activeTab: 'ProfileUser'
+          activeTab: this.setNewTab || 'ProfileUser'
       }
   },
-  setup(props) {
-    if(props.tab){
-      this.activeTab = props.tab
+  methods: {
+    changeActiveTab(data){
+        this.activeTab = data
+    }
+  },
+  setup() {
+    if(this.tab){
+      this.activeTab = this.setNewTab
       console.log(props.tab)
     }
   }

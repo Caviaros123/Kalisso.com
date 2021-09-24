@@ -4,7 +4,7 @@ import axios from "axios";
 
 Vue.use(Vuex);
 
-axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1";
+axios.defaults.baseURL = "http://localhost:8000/api/v1";
 // axios.defaults.headers.token
 
 export const store = new Vuex.Store({
@@ -51,6 +51,21 @@ export const store = new Vuex.Store({
             product.qty = 1;
             state.cart.push(product);
         },
+
+        increaseProductToCartQty(state, product) {
+            const duplicatedProductIndex = state.cart.findIndex(
+                item => item.id === product.id
+            );
+
+            if (duplicatedProductIndex !== -1) {
+                state.cart[duplicatedProductIndex].qty++;
+                return;
+            }
+
+            product.qty = 1;
+            state.cart.push(product);
+        },
+        
 
         removeProductToCart(state, index) {
             state.cart.splice(index, 1);

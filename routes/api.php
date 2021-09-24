@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Broadcast;
 
 
 /*
@@ -21,8 +22,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
 Route::group(['prefix' => 'v1'], function () {
     Route::post('/','Api\HomeController@index');
+    Broadcast::routes();
 
     //USER CONTROLLER
     Route::post('/login', 'Api\UserController@login');

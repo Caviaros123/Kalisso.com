@@ -159,7 +159,8 @@
 
 <script>
 import firebase from "firebase/app";
-import 'firebase/auth';  
+import 'firebase/auth'; 
+
 
 export default {
   props: {
@@ -167,7 +168,6 @@ export default {
       type: String,
     },
   },
-  components: {},
   data() {
     return {
       phone: this.phoneNumber || "+242064272080",
@@ -188,18 +188,8 @@ export default {
       coderesult: null,
     };
   },
-  setup() {
-    this.sendOtp();
-  },
   mounted() {
     firebase.auth().useDeviceLanguage();
-    // this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier({
-    //   size: "invisible",
-    //   callback: (response) => {
-    //     // reCAPTCHA solved, allow signInWithPhoneNumber.
-    //     console.log(response);
-    //   },
-    // });
 
     this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
       "recaptcha-container",
@@ -208,10 +198,13 @@ export default {
         callback: function (response) {
           // reCAPTCHA solved, allow signInWithPhoneNumber.
           // ...
+          alert("Success recaptcha");
+          this.sendOtp();
         },
         "expired-callback": function () {
           // Response expired. Ask user to solve reCAPTCHA again.
           // ...
+          alert("Echec recaptcha");
         },
       }
     );

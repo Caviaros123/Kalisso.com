@@ -70,7 +70,7 @@
                 <div class="widget-header mr-3">
                   <router-link
                     class="widget-view"
-                    :to="{ name: 'profile.orders' }"
+                    :to="{ name: 'profile.index', params: {setNewTab: 'ProfileOrders'} }"
                   >
                     <div class="icon-area">
                       <i class="fa fa-store"></i>
@@ -85,7 +85,7 @@
                 <div class="widget-header mr-3">
                   <router-link
                     class="widget-view"
-                    :to="{ name: 'profile.wishlist' }"
+                    :to="{ name: 'profile.index', params: {setNewTab: 'ProfileWishlist'} }"
                   >
                     <div class="icon-area">
                       <i class="fa fa-heart"></i>

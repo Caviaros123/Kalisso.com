@@ -117,9 +117,6 @@ export default {
   components: {
 	ProfileSettings,
   },
-  computed() {
-    
-  },
   created() {
       this.$store.dispatch('retrieveUserInfo')
 	  .then(response => {

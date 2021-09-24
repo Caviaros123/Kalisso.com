@@ -8,7 +8,7 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.2.5",
+        "php": "^7.3|^8.0",
         "beyondcode/laravel-websockets": "^1.11",
         "bumbummen99/shoppingcart": "^2.9",
         "fideloper/proxy": "^4.2",
@@ -16,17 +16,15 @@
         "guzzlehttp/guzzle": "^6.3",
         "jenssegers/agent": "^2.6",
         "laravel-lang/lang": "^8.1",
-        "laravel/cashier": "^10.7",
         "laravel/framework": "^7.24",
         "laravel/passport": "~9.0",
-        "laravel/scout": "^9.1",
         "laravel/tinker": "^2.0",
+        "livewire/livewire": "^2.6",
         "mckenziearts/laravel-notify": "^1.1",
         "nicolaslopezj/searchable": "^1.13",
         "phpmailer/phpmailer": "^6.1",
         "pusher/pusher-php-server": "5.0",
-        "spatie/laravel-cookie-consent": "^2.12",
-        "telesign/telesign": "^3.0"
+        "tcg/voyager": "^1.5"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

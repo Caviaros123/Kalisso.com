@@ -401,26 +401,54 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      counter: 1
+      counter: 1,
+      url: "https://kalisso.com/storage/",
+      images: {
+        thumbs: [{
+          id: 1,
+          url: 'https://kalisso.com/storage/products/September2020/fN7ijDqSnXnEyvt4O4DM-small.png'
+        }, {
+          id: 2,
+          url: 'https://kalisso.com/storage/products/September2020/fN7ijDqSnXnEyvt4O4DM-small.png'
+        }, {
+          id: 3,
+          url: 'https://kalisso.com/storage/products/September2020/fN7ijDqSnXnEyvt4O4DM-small.png'
+        }, {
+          id: 4,
+          url: 'https://kalisso.com/storage/products/September2020/fN7ijDqSnXnEyvt4O4DM-small.png'
+        }, {
+          id: 5,
+          url: 'https://kalisso.com/storage/products/September2020/fN7ijDqSnXnEyvt4O4DM-small.png'
+        }],
+        normal_size: [{
+          id: 1,
+          url: 'https://kalisso.com/storage/products/September2020/fN7ijDqSnXnEyvt4O4DM.png'
+        }, {
+          id: 2,
+          url: 'https://kalisso.com/storage/products/September2020/fN7ijDqSnXnEyvt4O4DM.png'
+        }],
+        large_size: [{
+          id: 1,
+          url: 'https://kalisso.com/storage/products/September2020/fN7ijDqSnXnEyvt4O4DM.png'
+        }, {
+          id: 2,
+          url: 'https://kalisso.com/storage/products/September2020/fN7ijDqSnXnEyvt4O4DM.png'
+        }]
+      },
+      zoomerOptions: {
+        zoomFactor: 2,
+        pane: "pane",
+        hoverDelay: 900,
+        namespace: "zoomer-right",
+        move_by_click: false,
+        scroll_items: 4,
+        choosed_thumb_border_color: "#dd2c00",
+        scroller_position: "bottom",
+        zoomer_pane_position: "right"
+      }
     };
   },
   computed: {
@@ -550,41 +578,21 @@ var render = function() {
         _c("div", { staticClass: "container" }, [
           _c("div", { staticClass: "row" }, [
             _c("aside", { staticClass: "col-md-6" }, [
-              _c("div", { staticClass: "card" }, [
-                _c("article", { staticClass: "gallery-wrap" }, [
-                  _c("div", { staticClass: "img-big-wrap" }, [
-                    _c("div", [
-                      _c("a", { attrs: { href: "#" } }, [
-                        _c("img", {
-                          attrs: {
-                            src:
-                              "https://kalisso.com/storage/" + _vm.product.image
-                          }
-                        })
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
+              _c("div", { staticClass: "card m-4" }, [
+                _c("div", { staticClass: "gallery-wrap" }, [
                   _c(
                     "div",
-                    { staticClass: "thumbs-wrap" },
-                    _vm._l(JSON.parse(_vm.product.images), function(img) {
-                      return _c(
-                        "a",
-                        {
-                          key: img,
-                          staticClass: "item-thumb fill",
-                          attrs: { href: "#" }
-                        },
-                        [
-                          _c("img", {
-                            staticClass: "fill",
-                            attrs: { src: "https://kalisso.com/storage/" + img }
-                          })
-                        ]
-                      )
-                    }),
-                    0
+                    { staticClass: "img-big-wrap" },
+                    [
+                      _c("ProductZoomer", {
+                        class: "img-fluid p-0 m-0 w-50",
+                        attrs: {
+                          "base-images": _vm.images,
+                          "base-zoomer-options": _vm.zoomerOptions
+                        }
+                      })
+                    ],
+                    1
                   )
                 ])
               ])
@@ -613,11 +621,11 @@ var render = function() {
                         [
                           _c("i", { staticClass: "fa fa-clipboard-check" }),
                           _vm._v(
-                            " " +
+                            "\n                " +
                               _vm._s(_vm.product.product_sale) +
-                              " \n                                Vendue" +
+                              " Vendue" +
                               _vm._s(_vm.product.product_sale > 2 ? "s" : "") +
-                              "\n                            "
+                              " "
                           )
                         ]
                       )
@@ -628,9 +636,9 @@ var render = function() {
                   _c("small", { staticClass: "badge badge-warning pr-3" }, [
                     _c("i", { staticClass: "fas fa-map-marker-alt pr-2 pl-2" }),
                     _vm._v(
-                      "\n                                " +
+                      "\n                " +
                         _vm._s(_vm.product.location) +
-                        "\n                            "
+                        "\n              "
                     )
                   ])
                 ]),
@@ -693,7 +701,7 @@ var render = function() {
                     ])
                   : _vm._e(),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-row  mt-4" }, [
+                _c("div", { staticClass: "form-row mt-4" }, [
                   _c("div", { staticClass: "form-group col-md" }, [
                     _vm.product.stock > 0
                       ? _c(
@@ -825,7 +833,7 @@ var staticRenderFns = [
               staticClass: "breadcrumb-item active",
               attrs: { "aria-current": "page" }
             },
-            [_vm._v("\n                    Items\n                ")]
+            [_vm._v("Items")]
           )
         ])
       ])
@@ -911,7 +919,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("td", [
           _c("i", { staticClass: "fa fa-check text-success" }),
-          _vm._v(" Yes\n                            ")
+          _vm._v(" Yes")
         ])
       ]),
       _vm._v(" "),
@@ -985,7 +993,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("p", { staticClass: "mb-2" }, [
           _vm._v(
-            "\n                                    Cras sit amet nibh libero, in gravida\n                                    nulla. Nulla vel metus scelerisque ante\n                                    sollicitudin\n                                "
+            "\n                  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus\n                  scelerisque ante sollicitudin\n                "
           )
         ])
       ])
@@ -1010,7 +1018,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("p", { staticClass: "mb-2" }, [
           _vm._v(
-            "\n                                    Cras sit amet nibh libero, in gravida\n                                    nulla. Nulla vel metus scelerisque ante\n                                    sollicitudin\n                                "
+            "\n                  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus\n                  scelerisque ante sollicitudin\n                "
           )
         ])
       ])
@@ -1035,7 +1043,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("p", { staticClass: "mb-2" }, [
           _vm._v(
-            "\n                                    Cras sit amet nibh libero, in gravida\n                                    nulla. Nulla vel metus scelerisque ante\n                                    sollicitudin\n                                "
+            "\n                  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus\n                  scelerisque ante sollicitudin\n                "
           )
         ])
       ])
@@ -1049,7 +1057,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "container" }, [
         _c("p", { staticClass: "pb-2 text-center" }, [
           _vm._v(
-            "\n                Delivering the latest product trends and industry news\n                straight to your inbox\n            "
+            "\n        Delivering the latest product trends and industry news straight to\n        your inbox\n      "
           )
         ]),
         _vm._v(" "),
@@ -1072,7 +1080,7 @@ var staticRenderFns = [
                   },
                   [
                     _c("i", { staticClass: "fa fa-envelope" }),
-                    _vm._v(" Subscribe\n                            ")
+                    _vm._v(" Subscribe\n              ")
                   ]
                 )
               ])
@@ -1080,7 +1088,7 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("small", { staticClass: "form-text" }, [
               _vm._v(
-                "We’ll never share your email address with a\n                        third-party.\n                    "
+                "We’ll never share your email address with a third-party.\n          "
               )
             ])
           ])

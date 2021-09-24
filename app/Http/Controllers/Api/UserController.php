@@ -51,7 +51,7 @@ class UserController extends Controller
                 ], 400);
             } else {
 
-                \DB::table('tbl_search')->insert([
+                DB::table('tbl_search')->insert([
                     'user_id' => auth('api')->id(),
                     'search_word' => $request->search,
                     'search_date' => NOW()
@@ -62,7 +62,7 @@ class UserController extends Controller
                     'message' => 'Recherche enregistrer'
                 ], 200);
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
                 'message' => $e

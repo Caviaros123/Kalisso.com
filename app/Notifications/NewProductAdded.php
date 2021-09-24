@@ -13,7 +13,6 @@ class NewProductAdded extends Notification
 {
     use Queueable;
 
-
     private $product;
 
     private $user;

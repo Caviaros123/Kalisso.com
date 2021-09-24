@@ -1,6 +1,5 @@
 import Logout from './components/pages/auth/Logout'
 
-
 const routes = [
     {
         path: "/category/:slug",
@@ -62,6 +61,7 @@ const routes = [
     {
         path: "/account/orders",
         name: "profile.orders",
+        props: true,
         meta: {
             requiresAuth: true
         },
@@ -70,6 +70,7 @@ const routes = [
     {
         path: "/profile/seller",
         name: "profile.seller",
+        props: true,
         meta: {
             requiresAuth: true
         },
@@ -78,6 +79,7 @@ const routes = [
     {
         path: "/profile/wishlist",
         name: "profile.wishlist",
+        props: true,
         meta: {
             requiresAuth: true
         },
@@ -86,6 +88,7 @@ const routes = [
     {
         path: "/profile/settings",
         name: "profile.settings",
+        props: true,
         meta: {
             requiresAuth: true
         },
@@ -94,6 +97,7 @@ const routes = [
     {
         path: "/profile/address",
         name: "profile.address",
+        props: true,
         meta: {
             requiresAuth: true
         },

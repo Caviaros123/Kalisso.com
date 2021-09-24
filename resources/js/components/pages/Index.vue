@@ -27,13 +27,29 @@
             :key="index"
           >
             <figure class="card-product-grid card-sm">
-              <router-link :to="{name : 'category.index', params: {selected: category.slug}}" class="img-wrap">
+              <router-link
+                :to="{
+                  name: 'category.index',
+                  params: { selected: category.slug },
+                }"
+                class="img-wrap"
+              >
                 <div class="d-flex justify-content-center text-center">
-                  <img :src="globalUrl+category.cat_img" :class="'mx-auto h-50 w-50 pt-5 img-fluid d-block'" />
+                  <img
+                    :src="globalUrl + category.cat_img"
+                    :class="'mx-auto h-50 w-50 pt-5 img-fluid d-block'"
+                  />
                 </div>
               </router-link>
               <div class="text-wrap p-3">
-                <router-link :to="{name : 'category.index', params: {selected: category.slug}}" class="title">{{ category.name }}</router-link>
+                <router-link
+                  :to="{
+                    name: 'category.index',
+                    params: { selected: category.slug },
+                  }"
+                  class="title"
+                  >{{ category.name }}</router-link
+                >
                 <span class="badge badge-danger"> -20% </span>
               </div>
             </figure>
@@ -42,6 +58,49 @@
       </div>
     </section>
     <!-- =============== SECTION DEAL // END =============== -->
+
+    <section class="padding-bottom">
+      <header class="section-heading heading-line">
+        <h4 class="title-section text-uppercase">Nouveautés</h4>
+      </header>
+      <div class="container px-4">
+        <carousel
+          :navigationEnabled="true"
+          :paginationPadding="5"
+          easing="ease"
+          :speed="300"
+          :autoplay="false"
+          :loop="true"
+          :minSwipeDistance="70"
+          :perPage="5"
+          :perPageCustom="[1199, 2]"
+          :resistanceCoef="1"
+        >
+          <slide
+            :class="'p-2'"
+            v-for="(product, index) in products.slice(0, 18)"
+            :key="index"
+          >
+            <div class="card card-sm card-product-grid">
+              <router-link
+                :to="{ name: 'products.show', params: { slug: product.slug } }"
+                class="img-wrap"
+              >
+                <img
+                  class="fill"
+                  v-bind:src="'https://kalisso.com/storage/' + product.image"
+                />
+              </router-link>
+              <figcaption class="info-wrap">
+                <a href="#" class="title">{{ product.name }}</a>
+                <div class="price mt-1">{{ presentPrice(product.price) }}</div>
+                <!-- price-wrap.// -->
+              </figcaption>
+            </div>
+          </slide>
+        </carousel>
+      </div>
+    </section>
 
     <!-- =============== SECTION 1 =============== -->
     <section class="padding-bottom">
@@ -319,37 +378,42 @@
         <h4 class="title-section text-uppercase">Produits Recommendés</h4>
       </header>
 
-      <div class="row row-sm">
-        <div
-          class="col-xl-2 col-lg-3 col-md-4 col-6"
-          v-for="(product, index) in products.slice(0, 18)"
-          :key="index"
+      <div class="container px-4">
+        <carousel
+          :navigationEnabled="true"
+          :paginationPadding="5"
+          easing="ease"
+          :speed="300"
+          :autoplay="true"
+          :loop="true"
+          :minSwipeDistance="70"
+          :perPage="5"
+          :resistanceCoef="1"
         >
-          <div class="card card-sm card-product-grid">
-            <router-link
-              :to="{ name: 'products.show', params: { slug: product.slug } }"
-              class="img-wrap"
-            >
-              <img
-                class="fill"
-                v-bind:src="'https://kalisso.com/storage/' + product.image"
-              />
-            </router-link>
-            <figcaption class="info-wrap">
-              <a href="#" class="title">{{ product.name }}</a>
-              <div class="price mt-1">{{ presentPrice(product.price) }}</div>
-              <!-- price-wrap.// -->
-            </figcaption>
-          </div>
-        </div>
-       
-        <!-- col.// -->
+          <slide
+            :class="'p-2'"
+            v-for="(product, index) in products.slice(0, 40)"
+            :key="index"
+          >
+            <div class="card-img shadow-none card-sm card-product-grid">
+              <router-link
+                :to="{ name: 'products.show', params: { slug: product.slug } }"
+                class="img-wrap"
+              >
+                <img
+                  class="img "
+                  v-bind:src="'https://kalisso.com/storage/' + product.image"
+                />
+              </router-link>
+              <figcaption class="info-wrap">
+                <a href="#" class="title">{{ product.name }}</a>
+                <div class="price mt-1">{{ presentPrice(product.price) }}</div>
+                <!-- price-wrap.// -->
+              </figcaption>
+            </div>
+          </slide>
+        </carousel>
       </div>
-       <div align="center">
-          <a href="#" class="btn btn-danger">
-            Voir plus
-          </a>
-       </div>
       <!-- row.// -->
     </section>
     <!-- =============== SECTION ITEMS .//END =============== -->
@@ -357,8 +421,7 @@
     <!-- =============== SECTION SERVICES =============== -->
     <section class="padding-bottom">
       <header class="section-heading heading-line">
-        <h4 class="title-section text-uppercase">SERVICES COMMERCIAUX
-</h4>
+        <h4 class="title-section text-uppercase">SERVICES COMMERCIAUX</h4>
       </header>
 
       <div class="row">
@@ -367,7 +430,9 @@
             <img src="images/posts/1.jpg" class="card-img-top" />
             <div class="card-body">
               <h6 class="title">Assurance commerciale</h6>
-              <p class="small text-uppercase text-muted">Protection de vos commandes</p>
+              <p class="small text-uppercase text-muted">
+                Protection de vos commandes
+              </p>
             </div>
           </article>
           <!-- card.// -->
@@ -479,16 +544,28 @@
       <img src="/images/banners/ad-sm.png" class="w-100" />
     </article>
 
+    
+
     <footer-section></footer-section>
   </div>
 </template>
 
 <script>
+import { Carousel, Slide } from "vue-carousel";
+import { VueperSlides, VueperSlide } from "vueperslides";
+import "vueperslides/dist/vueperslides.css";
+
 export default {
   data() {
     return {
       globalUrl: "https://kalisso.com/storage/",
     };
+  },
+  components: {
+    Carousel,
+    Slide,
+    VueperSlides,
+    VueperSlide,
   },
   computed: {
     products() {
@@ -500,3 +577,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.card-img {
+  background-size: cover!important;
+}
+</style>
